@@ -1,0 +1,32 @@
+---
+sidebar_position: 1
+---
+
+# New England Mesh
+
+New England Mesh is a community documentation site for resilient radio and mesh
+communications projects in New England.
+
+This site is intentionally static so it can be deployed cheaply and reliably at
+the network edge.
+
+## Environments
+
+- Production: `https://newenglandme.sh/` from the `main` branch
+- Staging: `https://staging.newenglandme.sh/` from the `staging` branch
+
+## Editing content
+
+Documentation pages live in the `docs/` directory and are written in Markdown or
+MDX. The sidebar order is controlled by `sidebars.ts`.
+
+For local development:
+
+npm run start
+```
+
+For production-like static output:
+
+```bash
+npm run build
+```
