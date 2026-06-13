@@ -4,15 +4,43 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 3rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
+.bannerImage {
+  display: block;
+  width: min(100%, 1080px);
+  height: auto;
+  margin: 0 auto 2rem;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.35);
+}
+
+.logoImage {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.28);
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .bannerImage {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .logoImage {
+    width: 88px;
+    height: 88px;
   }
 }
 

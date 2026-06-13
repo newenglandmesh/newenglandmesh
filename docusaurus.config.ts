@@ -11,7 +11,7 @@ const siteUrl = process.env.SITE_URL ?? (isStaging ? 'https://staging.newengland
 const config: Config = {
   title: 'New England Mesh',
   tagline: 'Community-built resilient communications for New England.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -56,7 +56,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/social-card.svg',
+    image: 'img/banner.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -64,7 +64,7 @@ const config: Config = {
       title: 'New England Mesh',
       logo: {
         alt: 'New England Mesh logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
