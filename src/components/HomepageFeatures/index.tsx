@@ -10,28 +10,30 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Regional mesh networking',
+    title: 'Local-first communications',
     description: (
       <>
-        Documentation for building and operating resilient community radio
-        communications across New England.
+        Build useful neighborhood and regional links that can keep working when
+        ordinary networks are congested or unavailable.
       </>
     ),
   },
   {
-    title: 'Production and staging',
+    title: 'MeshCore and Meshtastic',
     description: (
       <>
-        The main branch publishes to <code>newenglandme.sh</code>, while the
-        staging branch publishes to <code>staging.newenglandme.sh</code>.
+        Bring the radio you have, compare protocols clearly, and help document
+        practical settings for New England terrain and communities.
       </>
     ),
   },
   {
-    title: 'Static and fast',
+    title: 'Shared infrastructure',
     description: (
       <>
-        Built with Docusaurus and deployed as static assets on Cloudflare Pages.
+        Optional MeshCore observers, Meshtastic MQTT Routers, maps, and local
+        coordination make the mesh easier to discover and more useful for
+        nearby operators.
       </>
     ),
   },

@@ -13,16 +13,11 @@ const config: Config = {
   tagline: 'Community-built resilient communications for New England.',
   favicon: 'img/logo.png',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Cloudflare Pages sets CF_PAGES_BRANCH automatically. Production is main;
-  // staging is the staging branch/custom domain.
   url: siteUrl,
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   organizationName: 'newenglandmesh',
@@ -30,9 +25,6 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -74,6 +66,16 @@ const config: Config = {
           label: 'Docs',
         },
         {
+          href: 'https://map.newenglandme.sh/',
+          label: 'MeshCore Map',
+          position: 'left',
+        },
+        {
+          href: 'https://analyzer.newenglandme.sh/',
+          label: 'MeshCore Analyzer',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/newenglandmesh/newenglandmesh',
           label: 'GitHub',
           position: 'right',
@@ -87,8 +89,45 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Overview',
+              label: 'Get started',
               to: '/docs/intro',
+            },
+            {
+              label: 'MeshCore Operations',
+              to: '/docs/meshcore-operations',
+            },
+            {
+              label: 'Meshtastic Operations',
+              to: '/docs/meshtastic-operations',
+            },
+            {
+              label: 'Contributing',
+              to: '/docs/contributing',
+            },
+          ],
+        },
+        {
+          title: 'Regional tools',
+          items: [
+            {
+              label: 'New England MeshCore Map',
+              href: 'https://map.newenglandme.sh/',
+            },
+            {
+              label: 'New England MeshCore Analyzer',
+              href: 'https://analyzer.newenglandme.sh/',
+            },
+            {
+              label: 'Healthcheck',
+              href: 'https://healthcheck.newenglandme.sh/',
+            },
+            {
+              label: 'New England Mesh Discord',
+              href: 'https://discord.newenglandme.sh/',
+            },
+            {
+              label: 'CT Mesh: MeshCore and Meshtastic',
+              href: 'https://ctmesh.org/',
             },
           ],
         },
@@ -96,8 +135,12 @@ const config: Config = {
           title: 'Project',
           items: [
             {
-              label: 'Deployment',
-              to: '/docs/deployment',
+              label: 'MeshCore',
+              href: 'https://meshcore.io/',
+            },
+            {
+              label: 'Meshtastic',
+              href: 'https://meshtastic.org/',
             },
             {
               label: 'GitHub',

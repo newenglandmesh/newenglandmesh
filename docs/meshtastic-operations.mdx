@@ -1,0 +1,74 @@
+---
+sidebar_position: 3
+---
+
+# Meshtastic Operations
+
+These operator checklists focus on fixed Meshtastic infrastructure for New
+England: Router nodes, high-site installs, and MQTT publishing.
+
+## Understand Meshtastic roles
+
+Meshtastic **Client** nodes are personal or mobile nodes. They usually travel
+with a person, live at home, or ride in a car, similar to how a MeshCore
+Companion is used.
+
+Meshtastic **Router** nodes are the infrastructure devices. They are typically
+installed at good antenna sites, often with weatherproof enclosures, solar
+power, and higher-gain antennas.
+
+## Set up Meshtastic Routers
+
+1. Pick a legal site with good elevation, weather protection, stable power, and
+   safe antenna mounting.
+2. Use supported Meshtastic hardware and record the device, antenna, power
+   source, maintainer, and install location.
+3. Flash the current stable Meshtastic firmware and record the version.
+4. Configure the node as a Meshtastic Router.
+5. Use conservative radio and channel settings until a local plan is confirmed.
+6. Test locally before installing at height.
+7. After deployment, verify coverage from multiple directions and watch for
+   channel congestion.
+
+Useful links:
+
+- [Meshtastic docs](https://meshtastic.org/docs/)
+- [Meshtastic web flasher](https://flasher.meshtastic.org/)
+- [Meshtastic device roles](https://meshtastic.org/docs/configuration/radio/device/)
+- [Meshtastic antenna guide](https://meshtastic.org/docs/hardware/antennas/)
+- [Meshtastic map](https://map.meshtastic.org/)
+
+## Set up Meshtastic MQTT on Router nodes
+
+Meshtastic nodes can publish MQTT directly from Router nodes. MQTT can make
+opt-in Meshtastic activity visible to maps and other tools. Gateways should be
+used carefully because they can increase traffic and expose metadata depending
+on configuration.
+
+Basic process:
+
+1. Decide which Router node should publish MQTT for the area.
+2. Configure MQTT directly on that Meshtastic Router using current Meshtastic
+   docs and local channel policy.
+3. Use credentials and topic settings appropriate for the intended broker.
+4. Confirm what information will be published before leaving the gateway
+   running unattended.
+5. Document the radio, host, antenna, power source, and maintainer.
+
+Links to expand from:
+
+- [Meshtastic MQTT docs](https://meshtastic.org/docs/software/integrations/mqtt/)
+- [Meshtastic map](https://map.meshtastic.org/)
+
+## MQTT servers
+
+MQTT server information coming soon.
+
+## Needed local notes
+
+- Preferred Meshtastic public channel settings for each local area
+- Known public Meshtastic Router nodes
+- Maintainers for public Meshtastic routers
+- MQTT server addresses, credentials policy, and topic conventions
+- Hardware that survives New England weather
+- Discord invite links for active regional groups
