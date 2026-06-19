@@ -1,0 +1,75 @@
+---
+sidebar_position: 2
+---
+
+# MeshCore Operations
+
+These operator checklists focus on fixed MeshCore infrastructure for New
+England: Repeaters, Room Servers, and optional MQTT observer setups.
+
+## Understand MeshCore roles
+
+MeshCore **Companion** devices are personal or local nodes. They are commonly
+carried, used at home with a computer, or installed in a car. Most communicate
+with the MeshCore app over Bluetooth or USB; some use Wi-Fi.
+
+MeshCore **Repeaters** and **Room Servers** are the infrastructure devices to
+plan carefully. They should be stable, reachable, and documented because other
+operators may depend on them for coverage and routing.
+
+## Set up MeshCore Repeaters and Room Servers
+
+1. Pick a legal site with good elevation, weather protection, stable power, and
+   safe antenna mounting.
+2. Use supported MeshCore hardware and record the device, antenna, power source,
+   maintainer, and install location.
+3. Flash the current stable MeshCore firmware and record the version.
+4. Configure the correct MeshCore role for the site: Repeater or Room Server.
+5. Test locally before installing at height.
+6. After deployment, verify coverage from multiple directions and watch for
+   channel congestion.
+
+Useful links:
+
+- [MeshCore docs](https://docs.meshcore.io/)
+- [MeshCore flasher](https://flasher.meshcore.io/)
+- [MeshCore map](https://map.meshcore.io/)
+
+## Publish observer data with mctomqtt
+
+MeshCore observer setups publish what a local node can hear to MQTT so maps and
+analysis tools can show regional activity. A typical observer is a MeshCore node
+connected to a small always-on computer running `mctomqtt`.
+
+You do not need to pair every Repeater or Room Server with an observer. New
+England Mesh already has many observers on the main mesh, so add another one
+when it improves regional visibility or fills a known monitoring gap.
+
+Basic process:
+
+1. Build or install `mctomqtt` on a small always-on host near the radio.
+2. Connect the host to the MeshCore node over the supported serial or network
+   interface.
+3. Configure the MQTT broker, topic prefix, observer identity, and credentials.
+4. Start it under a service manager such as `systemd`.
+5. Confirm that observations appear in the intended map or downstream service.
+6. Document the radio, host, antenna, power source, and maintainer.
+
+Links to expand from:
+
+- [mctomqtt on GitHub](https://github.com/liamcottle/mctomqtt)
+- [New England MeshCore map](https://map.newenglandme.sh/)
+
+## MQTT servers
+
+MQTT server information coming soon.
+
+## Needed local notes
+
+- Preferred MeshCore regional settings
+- Known public MeshCore Repeaters and Room Servers
+- Existing observer coverage and gaps
+- Maintainers for public MeshCore infrastructure
+- MQTT server addresses, credentials policy, and topic conventions
+- Hardware that survives New England weather
+- Discord invite links for active regional groups

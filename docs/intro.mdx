@@ -2,31 +2,49 @@
 sidebar_position: 1
 ---
 
-# New England Mesh
+# Get started
 
-New England Mesh is a community documentation site for resilient radio and mesh
-communications projects in New England.
+New England Mesh helps people in the region build, test, and document resilient
+LoRa mesh communications. The focus is practical: get a node on the air, find
+nearby operators, improve coverage, and share what works.
 
-This site is intentionally static so it can be deployed cheaply and reliably at
-the network edge.
+## What to build
 
-## Environments
+- **MeshCore** is a newer LoRa mesh platform with personal Companion devices
+  plus infrastructure roles such as Repeater and Room Server.
+- **Meshtastic** is a mature, popular LoRa mesh platform with mobile apps,
+  hardware guides, public maps, MQTT support, and a large community.
+- **Local infrastructure** includes well-placed Repeaters, Room Servers,
+  Routers, MQTT integrations, public maps, and documentation that helps
+  neighbors discover the mesh.
 
-- Production: `https://newenglandme.sh/` from the `main` branch
-- Staging: `https://staging.newenglandme.sh/` from the `staging` branch
+## First steps
 
-## Editing content
+1. Pick a supported 915 MHz LoRa device for the platform you want to try.
+2. Flash the firmware with the official web flasher or project instructions.
+3. Pair the node with the mobile or web app.
+4. Use conservative public settings until you know the local channel plan.
+5. Test range from home, a hill, or another legal operating location.
+6. Share coverage notes, useful locations, and corrections with the community.
 
-Documentation pages live in the `docs/` directory and are written in Markdown or
-MDX. The sidebar order is controlled by `sidebars.ts`.
+## Useful links
 
-For local development:
+- [New England MeshCore map](https://map.newenglandme.sh/) - regional live map for MeshCore nodes
+- [New England MeshCore analyzer](https://analyzer.newenglandme.sh/) - regional tools for MeshCore packets, nodes, observers, and channels
+- [New England Mesh healthcheck](https://healthcheck.newenglandme.sh/) - service status for regional tools
+- [New England Mesh Discord](https://discord.newenglandme.sh/) - regional cross-state coordination, technical discussion, and build notes
+- [CT Mesh](https://ctmesh.org/) - Connecticut MeshCore and Meshtastic community links, maps, guides, and Discord
+- [MeshCore](https://meshcore.io/)
+- [MeshCore docs](https://docs.meshcore.io/)
+- [MeshCore web flasher](https://flasher.meshcore.io/)
+- [MeshCore map](https://map.meshcore.io/)
+- [Meshtastic](https://meshtastic.org/)
+- [Meshtastic docs](https://meshtastic.org/docs/)
+- [Meshtastic web flasher](https://flasher.meshtastic.org/)
+- [Meshtastic map](https://map.meshtastic.org/)
 
-npm run start
-```
+## Next
 
-For production-like static output:
-
-```bash
-npm run build
-```
+Read [MeshCore Operations](./meshcore-operations) or
+[Meshtastic Operations](./meshtastic-operations) for infrastructure and MQTT
+guides, or [Contributing](./contributing) to improve this site.
