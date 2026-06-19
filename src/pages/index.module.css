@@ -1,8 +1,3 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
   padding: 3rem 0 4rem;
   text-align: center;
@@ -46,6 +41,98 @@
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   align-items: center;
   justify-content: center;
+}
+
+.heroButton {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.heroButton:hover {
+  background: var(--ifm-color-emphasis-100);
+  border-color: #ffffff;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section:nth-of-type(even) {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.steps {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.5rem;
+}
+
+.steps > div {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1rem;
+}
+
+.stepNumber {
+  align-items: center;
+  background: var(--ifm-color-primary);
+  border-radius: 999px;
+  color: var(--ifm-color-primary-contrast-foreground);
+  display: inline-flex;
+  font-weight: 700;
+  height: 2rem;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  width: 2rem;
+}
+
+.linkGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.5rem;
+}
+
+.linkCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 8rem;
+  padding: 1.25rem;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.linkCard:hover {
+  border-color: var(--ifm-color-primary);
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.linkCard span {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.95rem;
+}
+
+@media screen and (max-width: 996px) {
+  .steps,
+  .linkGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 2.5rem 0;
+  }
 }

@@ -1,0 +1,78 @@
+---
+sidebar_position: 3
+---
+
+# Contributing
+
+This site is intentionally static so it can be deployed reliably and
+inexpensively at the network edge. Contributions should make it easier for
+someone in New England to get on the mesh, find local resources, or operate
+shared infrastructure.
+
+## Editing content
+
+Documentation pages live in `docs/` and are written in Markdown or MDX. The
+sidebar order is controlled by `sidebars.ts`.
+
+Run the development server:
+
+```bash
+npm run start
+```
+
+Build the static site:
+
+```bash
+npm run build
+```
+
+Run the TypeScript check:
+
+```bash
+npm run typecheck
+```
+
+## Environments
+
+| Environment | URL | Branch |
+| --- | --- | --- |
+| Production | `https://newenglandme.sh/` | `main` |
+| Staging | `https://staging.newenglandme.sh/` | `staging` |
+
+## Cloudflare Pages
+
+The site is configured for Cloudflare Pages.
+
+Recommended project settings:
+
+- Framework preset: Docusaurus, or None with the values below
+- Production branch: `main`
+- Preview branch include list: `staging`
+- Build command: `npm run build`
+- Build output directory: `build`
+- Root directory: `/`
+- Node.js version: `22` or newer
+
+Add both custom domains in the Cloudflare Pages project:
+
+- `newenglandme.sh`
+- `staging.newenglandme.sh`
+
+Cloudflare Pages exposes `CF_PAGES_BRANCH` during builds. The Docusaurus config
+uses that value to set the canonical site URL:
+
+- `staging` branch builds use `https://staging.newenglandme.sh`
+- all other builds default to `https://newenglandme.sh`
+
+For local verification:
+
+```bash
+npm run build:production
+npm run build:staging
+```
+
+Override the canonical URL explicitly when needed:
+
+```bash
+SITE_URL=https://example.com npm run build
+```
