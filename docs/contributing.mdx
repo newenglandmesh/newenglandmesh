@@ -2,77 +2,119 @@
 sidebar_position: 3
 ---
 
-# Contributing
+# Contributing documentation
 
-This site is intentionally static so it can be deployed reliably and
-inexpensively at the network edge. Contributions should make it easier for
-someone in New England to get on the mesh, find local resources, or operate
-shared infrastructure.
+New England Mesh documentation is maintained by the community. You do not need
+deployment access, a Cloudflare account, or programming experience to improve
+it. Contributions should help people find their local community, get a node on
+the air, operate shared infrastructure, or correct outdated information.
 
-## Editing content
+## What to contribute
 
-Documentation pages live in `docs/` and are written in Markdown or MDX. The
-sidebar order is controlled by `sidebars.ts`.
+Useful contributions include:
 
-Run the development server:
+- Correcting inaccurate or outdated instructions
+- Adding links to regional communities, maps, analyzers, and setup guides
+- Documenting MeshCore or Meshtastic operating practices
+- Improving explanations, examples, accessibility, spelling, or organization
+- Adding a new page for information that does not fit an existing guide
 
-```bash
-npm run start
+Do not commit passwords, MQTT credentials, private node information, precise
+private-site locations, or other sensitive information. Link to a community's
+authoritative access instructions instead.
+
+## Edit an existing page on GitHub
+
+The documentation source is in the [`docs/` directory on
+GitHub](https://github.com/newenglandmesh/newenglandmesh/tree/staging/docs).
+
+1. Open the page you want to change on this site.
+2. Select **Edit this page** at the bottom, or open the matching file in
+   `docs/` on GitHub.
+3. Select the pencil icon to edit the file.
+4. Make the change and use GitHub's preview tab to check the formatting.
+5. Commit the change to a new branch in your fork or the repository.
+6. Open a pull request with `staging` as the base branch.
+
+Keep each pull request focused on one topic. Explain what changed, why it is
+useful, and where factual or community-specific information came from.
+
+## Create a documentation page
+
+Documentation pages live in `docs/` and use Markdown (`.md`) or MDX (`.mdx`).
+Use Markdown unless the page needs an MDX-specific component. Name files with
+lowercase words separated by hyphens, such as `regional-mqtt-guide.md`.
+
+A basic page looks like this:
+
+```md
+---
+sidebar_position: 4
+---
+
+# Page title
+
+Briefly explain what the page covers and who it is for.
+
+## First section
+
+Write the instructions or reference information here.
 ```
 
-Build the static site:
+This repository uses an explicit sidebar. After adding a page, add its document
+ID—the filename without `.md` or `.mdx`—to
+[`sidebars.ts`](https://github.com/newenglandmesh/newenglandmesh/blob/staging/sidebars.ts)
+in the appropriate location.
 
-```bash
-npm run build
+## Markdown guidelines
+
+- Use one `#` heading for the page title and `##` headings for main sections.
+- Use short paragraphs, descriptive headings, and numbered steps for procedures.
+- Use backticks for commands, filenames, settings, region codes, and broker
+  hostnames.
+- Add a language after fenced code blocks, such as `bash`, `json`, or `toml`.
+- Use descriptive link text instead of phrases such as “click here.”
+- Link to another documentation page with a relative link, for example
+  `[MeshCore Operations](./meshcore-operations)`.
+- Put site images in `static/img/` and reference them as `/img/filename.png`.
+- Give every image useful alternative text.
+
+Example links and images:
+
+```md
+[CT Mesh](https://ctmesh.org/)
+
+[MeshCore Operations](./meshcore-operations)
+
+![Description of the image](/img/example.png)
 ```
 
-Run the TypeScript check:
+## Writing standards
 
-```bash
-npm run typecheck
-```
+- Prefer the regional community's current documentation as the source for its
+  broker, channel, map, and access information.
+- Clearly identify which organization operates a linked service.
+- Do not present a community-operated service as New England Mesh infrastructure.
+- Avoid copying credentials or settings that may change; link to the maintained
+  source when possible.
+- Distinguish recommendations from requirements.
+- Keep instructions practical, direct, and understandable to new operators.
+- Check external links and verify technical claims before submitting them.
 
-## Environments
+## Pull request checklist
 
-| Environment | URL | Branch |
-| --- | --- | --- |
-| Production | `https://newenglandme.sh/` | `main` |
-| Staging | `https://staging.newenglandme.sh/` | `staging` |
+Before submitting a documentation pull request:
 
-## Cloudflare Pages
+- [ ] The pull request targets `staging`.
+- [ ] The change contains only files related to the documentation update.
+- [ ] New pages are added to `sidebars.ts`.
+- [ ] Links point to the intended community or authoritative project source.
+- [ ] No credentials, private locations, or personal information are included.
+- [ ] Headings, lists, links, images, and code blocks render correctly.
+- [ ] The pull request explains what changed and why.
 
-The site is configured for Cloudflare Pages.
-
-Recommended project settings:
-
-- Framework preset: Docusaurus, or None with the values below
-- Production branch: `main`
-- Preview branch include list: `staging`
-- Build command: `npm run build`
-- Build output directory: `build`
-- Root directory: `/`
-- Node.js version: `22` or newer
-
-Add both custom domains in the Cloudflare Pages project:
-
-- `newenglandme.sh`
-- `staging.newenglandme.sh`
-
-Cloudflare Pages exposes `CF_PAGES_BRANCH` during builds. The Docusaurus config
-uses that value to set the canonical site URL:
-
-- `staging` branch builds use `https://staging.newenglandme.sh`
-- all other builds default to `https://newenglandme.sh`
-
-For local verification:
-
-```bash
-npm run build:production
-npm run build:staging
-```
-
-Override the canonical URL explicitly when needed:
-
-```bash
-SITE_URL=https://example.com npm run build
-```
+Open a contribution from the
+[`staging` branch on GitHub](https://github.com/newenglandmesh/newenglandmesh/tree/staging),
+or review the repository's [open pull
+requests](https://github.com/newenglandmesh/newenglandmesh/pulls) to help with an
+existing update.

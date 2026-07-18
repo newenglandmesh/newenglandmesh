@@ -37,7 +37,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/newenglandmesh/newenglandmesh/tree/main/',
+            'https://github.com/newenglandmesh/newenglandmesh/edit/staging/',
         },
         blog: false,
         theme: {
@@ -86,9 +86,16 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/newenglandmesh/newenglandmesh',
-          label: 'GitHub',
+          href: 'https://discord.newenglandme.sh/',
           position: 'right',
+          className: 'header-icon discord',
+          'aria-label': 'New England Mesh Discord server',
+        },
+        {
+          href: 'https://github.com/newenglandmesh/newenglandmesh',
+          position: 'right',
+          className: 'header-icon github',
+          'aria-label': 'New England Mesh GitHub repository',
         },
       ],
     },
@@ -144,8 +151,8 @@ const config: Config = {
               href: 'https://discord.newenglandme.sh/',
             },
             {
-              label: 'CT Mesh: MeshCore and Meshtastic',
-              href: 'https://ctmesh.org/',
+              label: 'Regional Communities and Services',
+              to: '/docs/regional-communities',
             },
           ],
         },

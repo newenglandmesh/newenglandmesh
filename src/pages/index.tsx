@@ -27,7 +27,7 @@ function HomepageHeader() {
           alt="New England Mesh logo"
         />
         <Heading as="h1" className="hero__title">
-          Contribute to New England Mesh
+          Community Mesh Networks Across New England
         </Heading>
         <p className="hero__subtitle">
           Community-run LoRa mesh networks for resilient local messaging,
@@ -118,7 +118,7 @@ export default function Home(): ReactNode {
         </section>
         <section className={styles.section}>
           <div className="container">
-            <Heading as="h2">Tools and community links</Heading>
+            <Heading as="h2">New England Mesh tools and links</Heading>
             <div className={styles.linkGrid}>
               <LinkCard
                 title="New England MeshCore Map"
@@ -146,34 +146,9 @@ export default function Home(): ReactNode {
                 href="https://healthcheck.newenglandme.sh/"
               />
               <LinkCard
-                title="CT Mesh"
-                description="Connecticut community site with MeshCore and Meshtastic links, maps, guides, and Discord."
-                href="https://ctmesh.org/"
-              />
-              <LinkCard
                 title="New England Mesh Discord"
                 description="Regional Discord for cross-state planning, technical discussion, build notes, and coordination."
                 href="https://discord.newenglandme.sh/"
-              />
-              <LinkCard
-                title="MeshCore"
-                description="Official MeshCore site with docs, app links, flasher, map, and Discord."
-                href="https://meshcore.io/"
-              />
-              <LinkCard
-                title="MeshCore Map"
-                description="Public MeshCore map for finding nearby Companion, Repeater, and Room Server devices."
-                href="https://map.meshcore.io/"
-              />
-              <LinkCard
-                title="Meshtastic"
-                description="Official Meshtastic site with docs, apps, flasher, map, and community Discord."
-                href="https://meshtastic.org/"
-              />
-              <LinkCard
-                title="Meshtastic Map"
-                description="Public map for opt-in Meshtastic Client and Router nodes using MQTT."
-                href="https://map.meshtastic.org/"
               />
               <LinkCard
                 title="New England Mesh Docs"
@@ -184,6 +159,11 @@ export default function Home(): ReactNode {
                 title="New England Mesh GitHub"
                 description="Improve this site, add local links, and propose regional operating notes."
                 href="https://github.com/newenglandmesh/newenglandmesh"
+              />
+              <LinkCard
+                title="Regional Communities and Services"
+                description="Find local groups, maps, guides, MQTT services, repositories, and community spaces across New England."
+                href="/docs/regional-communities"
               />
             </div>
           </div>

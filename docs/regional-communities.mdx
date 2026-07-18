@@ -1,0 +1,85 @@
+---
+sidebar_position: 2
+---
+
+# Regional communities and services
+
+New England Mesh provides cross-state coordination, documentation, maps, and
+analysis tools. Local communities operate their own Discord servers, setup
+guides, maps, MQTT services, and infrastructure. Use the community closest to
+you for local radio settings, MQTT uploads, and site-specific questions.
+
+## New England Mesh regional services
+
+These services are hosted for the wider New England community:
+
+- [New England Mesh website and documentation](https://newenglandme.sh/)
+- [New England MeshCore live map](https://map.newenglandme.sh/)
+- [New England MeshCore analyzer](https://analyzer.newenglandme.sh/)
+- [MeshCore region boundaries](https://newenglandme.sh/regions/)
+- [Service healthcheck](https://healthcheck.newenglandme.sh/)
+- [New England Mesh Discord](https://discord.newenglandme.sh/)
+- [New England Mesh GitHub repository](https://github.com/newenglandmesh/newenglandmesh)
+
+The regional map and analyzer combine data for Connecticut, Massachusetts, and
+New Hampshire. Their backend does **not** accept direct observer uploads.
+MeshCore observers should publish to their local community MQTT service; New
+England Mesh aggregates that community data upstream.
+
+## Greater Boston and Massachusetts
+
+Greater Boston Mesh supports MeshCore and Meshtastic operators around Greater
+Boston and publishes resources used by operators elsewhere in Massachusetts.
+
+- [Greater Boston Mesh website](https://bostonme.sh/)
+- [Community spaces and regional links](https://bostonme.sh/docs/community-spaces/)
+- [MeshCore MQTT setup](https://bostonme.sh/docs/MeshCore/meshcore-mqtt)
+- [Meshtastic MQTT setup](https://bostonme.sh/docs/Meshtastic/meshtastic-mqtt/)
+- [MeshCore live packet map](https://live.bostonme.sh/)
+- [Meshtastic Malla map](https://malla.bostonme.sh/map)
+
+## Connecticut
+
+CT Mesh supports Connecticut MeshCore and Meshtastic operators with local maps,
+setup guides, MQTT information, and community coordination.
+
+- [CT Mesh website](https://ctmesh.org/)
+- [CT Mesh Discord](https://ctmesh.org/discord)
+- [MeshCore map](https://meshcore-map.ctmesh.org/)
+- [MeshCore guides, tools, and MQTT](https://ctmesh.org/meshcore-resources.html)
+- [Meshtastic map](https://meshtastic-map.ctmesh.org/)
+- [Meshtastic guides, tools, and MQTT](https://ctmesh.org/meshtastic-resources.html)
+
+## New Hampshire
+
+NHMesh supports both MeshCore and Meshtastic with a combined live dashboard,
+knowledge base, MQTT guidance, and community coordination.
+
+- [NHMesh live dashboard](https://nhmesh.live/)
+- [NHMesh knowledge base](https://nhmesh.live/kb)
+- [NHMesh Discord](https://discord.gg/PkbHWSEXBv)
+
+## Maine
+
+Maine operators maintain separate repositories for MeshCore and Meshtastic:
+
+- [MaineMesh-Meshcore](https://github.com/deejdeej/MaineMesh-Meshcore) —
+  MeshCore regional information and observer resources
+- [Maine MeshCore observer setup](https://github.com/deejdeej/MaineMesh-Meshcore/blob/main/observer/README.md)
+- [MaineMesh](https://github.com/JFRHorton/MaineMesh) — Meshtastic community
+  information and resources
+
+## Rhode Island
+
+- [Rhode Island Mesh Discord](https://discord.gg/RSXmVP8bP2) — local MeshCore
+  and Meshtastic coordination
+
+## Choosing an MQTT service
+
+Publish observer or node data to the MQTT service operated by your local
+community. Local maintainers define credentials, topic conventions, region
+codes, and uplink policies. See [MeshCore Operations](./meshcore-operations) and
+[Meshtastic Operations](./meshtastic-operations) for protocol-specific guidance.
+
+If a community link or service changes, please update this page through the
+[documentation contribution guide](./contributing).
