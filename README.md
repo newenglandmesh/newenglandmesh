@@ -21,7 +21,7 @@ backend.
 
 ## Regional communities
 
-- **New Hampshire:** [NHMesh](https://nhmesh.com/) · [Observer and setup knowledge base](https://nhmesh.live/kb)
+- **New Hampshire:** [NHMesh](https://nhmesh.com/) · [NHMesh Live](https://nhmesh.live/)
 - **Connecticut:** [CT Mesh](https://ctmesh.org/)
 - **Greater Boston / Massachusetts:** [Greater Boston Mesh](https://bostonme.sh/)
 - **Maine MeshCore:** [MaineMesh-Meshcore on GitHub](https://github.com/deejdeej/MaineMesh-Meshcore)
