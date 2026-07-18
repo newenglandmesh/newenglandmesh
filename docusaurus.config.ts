@@ -77,7 +77,7 @@ const config: Config = {
         },
         {
           to: '/regional-information',
-          label: 'Regional Information',
+          label: 'Community Directory',
           position: 'left',
         },
         {
@@ -140,7 +140,7 @@ const config: Config = {
               to: '/regions',
             },
             {
-              label: 'Regional Information',
+              label: 'Community Directory',
               to: '/regional-information',
             },
             {

@@ -124,7 +124,7 @@ export default function Home(): ReactNode {
                 href="/regions"
               />
               <LinkCard
-                title="Regional Information"
+                title="Community Directory"
                 description="Find public Northeast MeshCore community websites, Discords, MeshMapper regions, and CoreScope dashboards."
                 href="/regional-information"
               />
