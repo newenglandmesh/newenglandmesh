@@ -59,10 +59,37 @@ Links to expand from:
 
 - [mctomqtt on GitHub](https://github.com/liamcottle/mctomqtt)
 - [New England MeshCore map](https://map.newenglandme.sh/)
+- [MeshCore region boundaries](/regions)
 
-## MQTT servers
+## Community MQTT services
 
-MQTT server information coming soon.
+New England Mesh operates a combined MQTT backend for Connecticut,
+Massachusetts, and New Hampshire data used by the [regional
+map](https://map.newenglandme.sh/) and
+[analyzer](https://analyzer.newenglandme.sh/). That backend does **not** accept
+direct observer uploads. Operators should publish to their local community's
+MQTT service; the regional services aggregate that community data upstream.
+
+MQTT infrastructure is operated by the individual regional communities, not by
+New England Mesh. Follow the community's current instructions and access policy
+before connecting an observer:
+
+- **Greater Boston Mesh:** [`mqttmc01.bostonme.sh` setup and broker
+  details](https://bostonme.sh/docs/MeshCore/meshcore-mqtt). The documented
+  listener uses secure WebSockets on port `443` with token authentication.
+- **Connecticut Mesh:** [CT Mesh MeshCore
+  resources](https://ctmesh.org/meshcore-resources). CT Mesh documents an
+  uplink-only broker at `mqtt.ctmesh.org` for fixed observer nodes, using the
+  `BDL` region code.
+- **NHMesh:** [NHMesh knowledge base](https://nhmesh.live/kb). Use its current
+  Observer / Gateway Setup and MQTT guidance for New Hampshire deployments.
+- **Maine Mesh:** [Maine Mesh observer
+  configuration](https://github.com/deejdeej/MaineMesh-Meshcore/blob/main/observer/README.md).
+  Maine's documented `BGR` observer configuration publishes to the Greater
+  Boston Mesh broker in addition to its other monitoring destinations.
+
+Broker credentials and connection requirements can change. Use the linked
+community documentation rather than copying credentials into this site.
 
 ## Needed local notes
 
@@ -70,6 +97,6 @@ MQTT server information coming soon.
 - Known public MeshCore Repeaters and Room Servers
 - Existing observer coverage and gaps
 - Maintainers for public MeshCore infrastructure
-- MQTT server addresses, credentials policy, and topic conventions
+- Additional community MQTT services and topic conventions
 - Hardware that survives New England weather
 - Discord invite links for active regional groups

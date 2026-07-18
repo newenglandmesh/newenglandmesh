@@ -37,7 +37,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/newenglandmesh/newenglandmesh/tree/main/',
+            'https://github.com/newenglandmesh/newenglandmesh/edit/staging/',
         },
         blog: false,
         theme: {
@@ -68,17 +68,39 @@ const config: Config = {
         {
           href: 'https://map.newenglandme.sh/',
           label: 'MeshCore Map',
+          position: 'right',
+        },
+        {
+          to: '/regions',
+          label: 'Region Boundaries',
+          position: 'left',
+        },
+        {
+          to: '/regional-information',
+          label: 'Community Directory',
           position: 'left',
         },
         {
           href: 'https://analyzer.newenglandme.sh/',
           label: 'MeshCore Analyzer',
-          position: 'left',
+          position: 'right',
+        },
+        {
+          href: 'https://healthcheck.newenglandme.sh/',
+          label: 'MeshCore Health Check',
+          position: 'right',
+        },
+        {
+          href: 'https://discord.newenglandme.sh/',
+          position: 'right',
+          className: 'header-icon discord',
+          'aria-label': 'New England Mesh Discord server',
         },
         {
           href: 'https://github.com/newenglandmesh/newenglandmesh',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-icon github',
+          'aria-label': 'New England Mesh GitHub repository',
         },
       ],
     },
@@ -114,6 +136,14 @@ const config: Config = {
               href: 'https://map.newenglandme.sh/',
             },
             {
+              label: 'MeshCore Region Boundaries',
+              to: '/regions',
+            },
+            {
+              label: 'Community Directory',
+              to: '/regional-information',
+            },
+            {
               label: 'New England MeshCore Analyzer',
               href: 'https://analyzer.newenglandme.sh/',
             },
@@ -126,8 +156,8 @@ const config: Config = {
               href: 'https://discord.newenglandme.sh/',
             },
             {
-              label: 'CT Mesh: MeshCore and Meshtastic',
-              href: 'https://ctmesh.org/',
+              label: 'Regional Communities and Services',
+              to: '/docs/regional-communities',
             },
           ],
         },

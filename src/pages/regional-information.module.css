@@ -1,0 +1,143 @@
+.page {
+  padding-bottom: 4rem;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest), var(--ifm-color-primary));
+  color: var(--ifm-color-white);
+  padding: 4rem 0 3rem;
+}
+
+.header h1 {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1.15rem;
+  margin: 0;
+  max-width: 48rem;
+}
+
+.section {
+  margin-top: 3rem;
+}
+
+.section h2 {
+  font-size: 1.65rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem;
+}
+
+.statema {
+  background: rgba(251, 191, 36, 0.12);
+}
+
+.statect {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.statenh {
+  background: rgba(132, 204, 22, 0.12);
+}
+
+.statevt {
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.stateri {
+  background: rgba(192, 132, 252, 0.12);
+}
+
+.stateme {
+  background: rgba(45, 212, 191, 0.12);
+}
+
+.stateny {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+.statepa {
+  background: rgba(251, 146, 60, 0.12);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.65rem;
+}
+
+.area {
+  color: var(--ifm-color-primary-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.description {
+  color: var(--ifm-color-emphasis-800);
+  flex-grow: 1;
+  margin-bottom: 1.25rem;
+}
+
+.links {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-top: 1rem;
+}
+
+.links div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.links dt {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.links dd {
+  margin: 0;
+}
+
+.note {
+  border-left: 4px solid var(--ifm-color-primary);
+  color: var(--ifm-color-emphasis-800);
+  margin: 3rem 0 0;
+  padding-left: 1rem;
+}
+
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

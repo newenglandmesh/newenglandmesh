@@ -28,3 +28,29 @@
   --ifm-color-primary-lightest: #eff6ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.header-icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+}
+
+.header-icon.github {
+  background-image: url('/img/github.svg');
+}
+
+.header-icon.discord {
+  background-image: url('/img/discord.svg');
+  position: relative;
+  top: 4px;
+}
+
+.header-icon svg {
+  display: none;
+}
+
+[data-theme='dark'] .header-icon.github {
+  filter: invert(1);
+}
