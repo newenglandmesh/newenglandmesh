@@ -10,26 +10,19 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
   const bannerUrl = useBaseUrl('/img/banner.png');
-  const logoUrl = useBaseUrl('/img/logo.png');
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
+      <div className={clsx('container', styles.heroContent)}>
         <img
           className={styles.bannerImage}
           src={bannerUrl}
           alt="New England Mesh banner"
         />
-        <img
-          className={styles.logoImage}
-          src={logoUrl}
-          alt="New England Mesh logo"
-        />
-        <Heading as="h1" className="hero__title">
+        <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
           Community Mesh Networks Across New England
         </Heading>
-        <p className="hero__subtitle">
+        <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
           Community-run LoRa mesh networks for resilient local messaging,
           experimentation, and backup communications across New England.
         </p>

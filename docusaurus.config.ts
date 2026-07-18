@@ -68,7 +68,7 @@ const config: Config = {
         {
           href: 'https://map.newenglandme.sh/',
           label: 'MeshCore Map',
-          position: 'left',
+          position: 'right',
         },
         {
           to: '/regions',
@@ -83,7 +83,12 @@ const config: Config = {
         {
           href: 'https://analyzer.newenglandme.sh/',
           label: 'MeshCore Analyzer',
-          position: 'left',
+          position: 'right',
+        },
+        {
+          href: 'https://healthcheck.newenglandme.sh/',
+          label: 'MeshCore Health Check',
+          position: 'right',
         },
         {
           href: 'https://discord.newenglandme.sh/',
