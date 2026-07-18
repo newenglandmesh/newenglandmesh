@@ -131,6 +131,11 @@ export default function Home(): ReactNode {
                 href="/regions"
               />
               <LinkCard
+                title="Regional Information"
+                description="Find public Northeast MeshCore community websites, Discords, MeshMapper regions, and CoreScope dashboards."
+                href="/regional-information"
+              />
+              <LinkCard
                 title="New England MeshCore Analyzer"
                 description="Regional tools for MeshCore packets, channels, nodes, observers, and analytics."
                 href="https://analyzer.newenglandme.sh/"
