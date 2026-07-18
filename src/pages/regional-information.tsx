@@ -22,7 +22,7 @@ const statewideCommunities: Community[] = [
     state: 'ct',
     description: 'Statewide Connecticut user group with MeshCore guides, repeaters, and a live node map.',
     website: 'https://ctmesh.org/',
-    discord: 'https://discord.gg/aZHgYWpK',
+    discord: 'https://ctmesh.org/discord',
     meshMapper: {label: 'BDL · Connecticut Statewide', href: 'https://bdl.meshmapper.net/'},
     coreScope: {label: 'CT Mesh CoreScope', href: 'https://analyzer.ctmesh.org/'},
   },
