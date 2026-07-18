@@ -1,0 +1,182 @@
+[
+  {
+    "id": "east",
+    "name": "East Coast Region",
+    "short_name": "EAST",
+    "region_type": "East Coast Region",
+    "coordination_status": "political_boundaries",
+    "coordination_label": "Political Boundaries",
+    "file": "east.geojson"
+  },
+  {
+    "id": "northeast",
+    "name": "Northeast Region",
+    "short_name": "NORTHEAST",
+    "region_type": "Northeast Region",
+    "coordination_status": "political_boundaries",
+    "coordination_label": "Political Boundaries",
+    "file": "northeast.geojson"
+  },
+  {
+    "id": "me",
+    "name": "Maine",
+    "short_name": "ME",
+    "region_type": "State Region",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "me.geojson"
+  },
+  {
+    "id": "nh",
+    "name": "New Hampshire",
+    "short_name": "NH",
+    "region_type": "State Region",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "nh.geojson"
+  },
+  {
+    "id": "vt",
+    "name": "Vermont",
+    "short_name": "VT",
+    "region_type": "State Region",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "vt.geojson"
+  },
+  {
+    "id": "bos",
+    "name": "Boston / Eastern Massachusetts",
+    "short_name": "BOS",
+    "region_type": "Metro Region",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "bos.geojson"
+  },
+  {
+    "id": "pv",
+    "name": "Pioneer Valley",
+    "short_name": "PV",
+    "region_type": "Regional",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "pv.geojson"
+  },
+  {
+    "id": "wma",
+    "name": "Western Massachusetts",
+    "short_name": "WMA",
+    "region_type": "Regional",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "wma.geojson"
+  },
+  {
+    "id": "brk",
+    "name": "Berkshires / Western Massachusetts Proposal",
+    "short_name": "BRK",
+    "region_type": "Proposed Region",
+    "coordination_status": "proposed",
+    "coordination_label": "Proposed Region",
+    "file": "brk.geojson"
+  },
+  {
+    "id": "ct",
+    "name": "Connecticut",
+    "short_name": "CT",
+    "region_type": "State Region",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "ct.geojson"
+  },
+  {
+    "id": "ct-rv",
+    "name": "Connecticut River Valley",
+    "short_name": "CT-RV",
+    "region_type": "Corridor",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "ct-rv.geojson"
+  },
+  {
+    "id": "ri",
+    "name": "Rhode Island",
+    "short_name": "RI",
+    "region_type": "State Region",
+    "coordination_status": "official_new_england",
+    "coordination_label": "Official New England Mesh Region",
+    "file": "ri.geojson"
+  },
+  {
+    "id": "msv",
+    "name": "Sullivan County / MSV",
+    "short_name": "MSV",
+    "region_type": "Adjacent Region - County",
+    "coordination_status": "extrapolated_external",
+    "coordination_label": "Suggested External Region",
+    "file": "msv.geojson"
+  },
+  {
+    "id": "hud",
+    "name": "Hudson River Valley",
+    "short_name": "HUD",
+    "region_type": "Adjacent Region - Corridor",
+    "coordination_status": "extrapolated_external",
+    "coordination_label": "Suggested External Region",
+    "file": "hud.geojson"
+  },
+  {
+    "id": "adk",
+    "name": "Adirondacks",
+    "short_name": "ADK",
+    "region_type": "Adjacent Region - Park Boundary",
+    "coordination_status": "political_boundaries",
+    "coordination_label": "Political Boundaries",
+    "file": "adk.geojson"
+  },
+  {
+    "id": "erie",
+    "name": "Erie Canal Corridor",
+    "short_name": "ERIE",
+    "region_type": "Adjacent Region - Corridor",
+    "coordination_status": "extrapolated_external",
+    "coordination_label": "Suggested External Region",
+    "file": "erie.geojson"
+  },
+  {
+    "id": "nyc",
+    "name": "New York City / Lower Hudson",
+    "short_name": "NYC",
+    "region_type": "Adjacent Region - Metro",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
+    "file": "nyc.geojson"
+  },
+  {
+    "id": "hv",
+    "name": "Hudson Valley",
+    "short_name": "HV",
+    "region_type": "Adjacent Region - Corridor",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
+    "file": "hv.geojson"
+  },
+  {
+    "id": "alb",
+    "name": "Albany / Capital Region",
+    "short_name": "ALB",
+    "region_type": "Adjacent Region - Metro",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
+    "file": "alb.geojson"
+  },
+  {
+    "id": "mv",
+    "name": "Mohawk Valley",
+    "short_name": "MV",
+    "region_type": "Adjacent Region - Corridor",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
+    "file": "mv.geojson"
+  }
+]

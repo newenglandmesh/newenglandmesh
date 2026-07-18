@@ -71,6 +71,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/regions',
+          label: 'Region Boundaries',
+          position: 'left',
+        },
+        {
           href: 'https://analyzer.newenglandme.sh/',
           label: 'MeshCore Analyzer',
           position: 'left',
@@ -112,6 +117,10 @@ const config: Config = {
             {
               label: 'New England MeshCore Map',
               href: 'https://map.newenglandme.sh/',
+            },
+            {
+              label: 'MeshCore Region Boundaries',
+              to: '/regions',
             },
             {
               label: 'New England MeshCore Analyzer',
