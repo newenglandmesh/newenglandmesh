@@ -148,6 +148,22 @@ export default function Regions(): ReactNode {
                 </p>
               </article>
             </section>
+
+            <section className={styles.repeaterCli} aria-label="MeshCore repeater CLI commands">
+              <Heading as="h2">MeshCore Repeater CLI</Heading>
+              <article className={styles.cliPanel}>
+                <p>Add and allow the region codes served by the repeater:</p>
+                <pre><code>{`region put <region-code>
+region allowf <region-code>
+region allowf *
+region save`}</code></pre>
+                <p>
+                  Wildcard forwarding remains enabled. See the{' '}
+                  <a href="https://docs.meshcore.io/cli_commands/">MeshCore CLI reference</a>
+                  {' '}for the full command set.
+                </p>
+              </article>
+            </section>
           </div>
         </section>
       </main>
