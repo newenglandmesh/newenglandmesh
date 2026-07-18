@@ -126,6 +126,11 @@ export default function Home(): ReactNode {
                 href="https://map.newenglandme.sh/"
               />
               <LinkCard
+                title="MeshCore Region Boundaries"
+                description="Generated MeshCore coordination boundaries with notes on scope and extrapolated regions."
+                href="/regions"
+              />
+              <LinkCard
                 title="New England MeshCore Analyzer"
                 description="Regional tools for MeshCore packets, channels, nodes, observers, and analytics."
                 href="https://analyzer.newenglandme.sh/"
