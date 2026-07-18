@@ -60,15 +60,27 @@ Links to expand from:
 - [Meshtastic MQTT docs](https://meshtastic.org/docs/software/integrations/mqtt/)
 - [Meshtastic map](https://map.meshtastic.org/)
 
-## MQTT servers
+## Community MQTT services
 
-MQTT server information coming soon.
+MQTT infrastructure is operated by the individual regional communities, not by
+New England Mesh. Follow the community's current instructions and access policy
+before connecting a node:
+
+- **Greater Boston Mesh:** [`mqttmt01.bostonme.sh` setup and broker
+  details](https://bostonme.sh/docs/Meshtastic/meshtastic-mqtt/). The documented
+  listener uses MQTT on port `1883`, requires authentication, and uplinks the
+  `msh/US/MA` topic without MQTT-to-RF downlink.
+- **NHMesh:** [NHMesh knowledge base](https://nhmesh.live/kb). Use its current
+  MQTT Setup and Meshtastic MQTT Client guidance for New Hampshire deployments.
+
+Broker credentials and connection requirements can change. Use the linked
+community documentation rather than copying credentials into this site.
 
 ## Needed local notes
 
 - Preferred Meshtastic public channel settings for each local area
 - Known public Meshtastic Router nodes
 - Maintainers for public Meshtastic routers
-- MQTT server addresses, credentials policy, and topic conventions
+- Additional community MQTT services and topic conventions
 - Hardware that survives New England weather
 - Discord invite links for active regional groups

@@ -11,6 +11,7 @@ type Community = {
   description: string;
   website?: string;
   discord?: string;
+  live?: {label: string; href: string};
   meshMapper?: {label: string; href: string};
   coreScope?: {label: string; href: string};
 };
@@ -22,7 +23,7 @@ const statewideCommunities: Community[] = [
     state: 'ct',
     description: 'Statewide Connecticut user group with MeshCore guides, repeaters, and a live node map.',
     website: 'https://ctmesh.org/',
-    discord: 'https://discord.gg/aZHgYWpK',
+    discord: 'https://ctmesh.org/discord',
     meshMapper: {label: 'BDL · Connecticut Statewide', href: 'https://bdl.meshmapper.net/'},
     coreScope: {label: 'CT Mesh CoreScope', href: 'https://analyzer.ctmesh.org/'},
   },
@@ -33,6 +34,7 @@ const statewideCommunities: Community[] = [
     description: 'Statewide, dual-protocol community with an active MeshCore room, setup guides, and live network tools.',
     website: 'https://nhmesh.com/',
     discord: 'https://discord.gg/8Axh3rdgDD',
+    live: {label: 'NHMesh Live', href: 'https://nhmesh.live/'},
     meshMapper: {label: 'CON · New Hampshire Statewide', href: 'https://con.meshmapper.net/'},
   },
   {
@@ -215,6 +217,12 @@ function CommunityCard({community}: {community: Community}): ReactNode {
             <dd><a href={community.discord} target="_blank" rel="noopener noreferrer">Join community</a></dd>
           </div>
         )}
+        {community.live && (
+          <div>
+            <dt>Live network</dt>
+            <dd><a href={community.live.href} target="_blank" rel="noopener noreferrer">{community.live.label}</a></dd>
+          </div>
+        )}
         {community.meshMapper && (
           <div>
             <dt>MeshMapper</dt>
@@ -243,15 +251,15 @@ function CommunitySection({title, communities}: {title: string; communities: Com
   );
 }
 
-export default function RegionalInformation(): ReactNode {
+export default function CommunityDirectory(): ReactNode {
   return (
     <Layout
-      title="Regional Information"
+      title="Community Directory"
       description="Public MeshCore communities, websites, Discord servers, MeshMapper regions, and CoreScope dashboards in the Northeast United States.">
       <main className={styles.page}>
         <header className={styles.header}>
           <div className="container">
-            <Heading as="h1">Regional Information</Heading>
+            <Heading as="h1">Community Directory</Heading>
             <p>
               Public MeshCore community hubs in the Northeast, grouped by New England and neighboring regions.
               Each card links to the community’s website and coordination Discord, plus its public MeshMapper
