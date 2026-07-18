@@ -10,6 +10,7 @@
     "build:staging": "DEPLOY_ENV=staging docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
     "deploy:local": "npm run build && wrangler deploy",
     "preview": "npm run build && wrangler dev",
     "clear": "docusaurus clear",
