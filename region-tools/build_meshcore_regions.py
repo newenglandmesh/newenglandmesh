@@ -548,7 +548,6 @@ def main() -> None:
     region_layers = [built_regions[definition["id"]] for definition in REGIONS]
     regions = gpd.GeoDataFrame(pd.concat(region_layers, ignore_index=True), crs=4326)
 
-    write_geojson(regions, OUT / "meshcore_regions.geojson")
     index = []
     definitions_by_id = {definition["id"]: definition for definition in REGIONS}
     for region_id, row in regions.set_index("id").iterrows():
