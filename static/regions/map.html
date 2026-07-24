@@ -419,6 +419,16 @@
       );
     }
 
+    .swatch.proposed {
+      background-image: repeating-linear-gradient(
+        315deg,
+        transparent 0,
+        transparent 3px,
+        currentColor 3px,
+        currentColor 5px
+      );
+    }
+
     .popup-title {
       font-weight: 700;
       margin-bottom: 6px;
@@ -930,7 +940,7 @@
               <li>
                 <span class="${swatchClass(props)}" style="color: ${color}; background-color: ${color}33"></span>
                 <div>
-                  <strong class="popup-region-name"><code class="region-code">${regionCode(props)}</code> - ${props.name}</strong>
+                  <strong class="popup-region-name"><code class="region-code">${regionCode(props)}</code>${id === "east" ? " (Optional)" : ""} - ${props.name}</strong>
                   <span>${regionTypeLabel(props)}</span>
                   <span class="coordination-badge ${coordinationClass(props)}">${coordinationLabel(props)}</span>
                 </div>
