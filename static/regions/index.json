@@ -8,7 +8,9 @@
       "region_type": "East Coast Region",
       "coordination_status": "political_boundaries",
       "coordination_label": "Political Boundaries",
-      "file": "east.geojson"
+      "file": "east.geojson",
+      "optional": true,
+      "visible": false
     },
     {
       "id": "northeast",
@@ -17,7 +19,8 @@
       "region_type": "Northeast Region",
       "coordination_status": "political_boundaries",
       "coordination_label": "Political Boundaries",
-      "file": "northeast.geojson"
+      "file": "northeast.geojson",
+      "visible": false
     },
     {
       "id": "me",

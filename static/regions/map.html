@@ -955,7 +955,7 @@
               <li>
                 <span class="${swatchClass(props)}" style="color: ${color}; background-color: ${color}33"></span>
                 <div>
-                  <strong class="popup-region-name"><code class="region-code">${regionCode(props)}</code>${id === "east" ? " (Optional)" : ""} - ${props.name}</strong>
+                  <strong class="popup-region-name"><code class="region-code">${regionCode(props)}</code>${props.optional ? " (Optional)" : ""} - ${props.name}</strong>
                   <span>${regionTypeLabel(props)}</span>
                   <span class="coordination-badge ${coordinationClass(props)}">${coordinationLabel(props)}</span>
                 </div>
@@ -1015,13 +1015,11 @@
 
     fetchJson(`${regionPathPrefix}index.json`)
       .then((manifest) => {
-        const index = Array.isArray(manifest) ? manifest : manifest?.regions;
+        const index = manifest?.regions;
         if (!Array.isArray(index)) {
           throw new Error(`${regionPathPrefix}index.json must contain a regions array`);
         }
-        if (!Array.isArray(manifest)) {
-          setMapTitle(manifest.title);
-        }
+        setMapTitle(manifest.title);
         index.forEach((entry, indexPosition) => {
           if (entry.id !== "east") {
             regionColors.set(entry.id, palette[indexPosition % palette.length]);
@@ -1081,7 +1079,7 @@
           const id = regionId(props, entry.id);
           const color = colorFor(id);
           overlayControl.addOverlay(layer, `${regionCode(props)} - ${props.name}`);
-          if (id !== "east" && id !== "northeast") {
+          if (entry.visible !== false) {
             layer.addTo(map);
             addHatchPattern(layer, props);
           }
