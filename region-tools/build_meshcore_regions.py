@@ -25,10 +25,12 @@ ADIRONDACK_RAW = SOURCES / "adirondack_park_boundary_raw.geojson"
 ADIRONDACK_EXCLUSION = SOURCES / "adirondack_park_exclusion.geojson"
 
 NE_STATES = {"CT", "RI", "MA", "VT", "NH", "ME"}
-OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "bos", "pv", "wma", "ct", "ct-rv", "ri"}
+OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "bos", "pv", "brk", "ct", "ct-rv", "ri"}
 POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "adk"}
-PROPOSED_REGION_IDS = {"brk"}
-COORDINATED_EXTERNAL_REGION_IDS = {"nyc", "alb", "mv", "hv"}
+# Keep this collection even when there are no current proposals. Adding an ID
+# here restores its generated proposed-region metadata automatically.
+PROPOSED_REGION_IDS: set[str] = set()
+COORDINATED_EXTERNAL_REGION_IDS = {"hud", "erie", "nyc", "li", "alb", "mv", "hv"}
 
 
 def coordination_status_for(region_id: str) -> str:
@@ -120,7 +122,7 @@ REGIONS = [
             "MA": ["Barnstable", "Bristol", "Dukes", "Essex", "Middlesex", "Nantucket", "Norfolk", "Plymouth", "Suffolk", "Worcester"],
             "NH": ["Hillsborough", "Merrimack", "Rockingham", "Strafford"],
         },
-        "notes": "Eastern Massachusetts plus southern/eastern New Hampshire; overlaps WMA, NH, RI, and CT-RV.",
+        "notes": "Eastern Massachusetts plus southern/eastern New Hampshire; overlaps BRK, NH, RI, and CT-RV.",
     },
     {
         "id": "pv",
@@ -134,27 +136,16 @@ REGIONS = [
         "notes": "Pioneer Valley region.",
     },
     {
-        "id": "wma",
-        "name": "Western Massachusetts",
-        "short_name": "WMA",
+        "id": "brk",
+        "name": "Berkshires / Western Massachusetts",
+        "short_name": "BRK",
         "kind": "regional",
+        "region_type": "Regional",
         "basis": "Community consensus boundary represented by a U.S. Census county boundary",
         "counties": {
             "MA": ["Berkshire"],
         },
-        "notes": "Western Massachusetts west of the Pioneer Valley.",
-    },
-    {
-        "id": "brk",
-        "name": "Berkshires / Western Massachusetts Proposal",
-        "short_name": "BRK",
-        "kind": "proposed_region",
-        "region_type": "Proposed Region",
-        "basis": "Community proposal to rename the existing WMA boundary, represented by a U.S. Census county boundary",
-        "counties": {
-            "MA": ["Berkshire"],
-        },
-        "notes": "Proposed rename of the existing WMA region. The boundary remains Berkshire County and does not include Pioneer Valley counties.",
+        "notes": "Berkshire County, west of the Pioneer Valley.",
     },
     {
         "id": "ct",
@@ -258,6 +249,18 @@ REGIONS = [
             "NJ": ["Bergen", "Essex", "Hudson", "Middlesex", "Monmouth", "Morris", "Passaic", "Union"],
         },
         "notes": "NYC and lower Hudson region near HUD. Dutchess, Orange, and Putnam are left to HV.",
+    },
+    {
+        "id": "li",
+        "name": "Long Island",
+        "short_name": "LI",
+        "kind": "adjacent_island",
+        "region_type": "Adjacent Region - Island",
+        "basis": "Existing geographic boundary represented by U.S. Census county boundaries",
+        "counties": {
+            "NY": ["Kings", "Nassau", "Queens", "Suffolk"],
+        },
+        "notes": "Long Island, including Brooklyn and Queens, represented by Kings, Queens, Nassau, and Suffolk Counties.",
     },
     {
         "id": "hv",

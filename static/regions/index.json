@@ -63,21 +63,12 @@
     "file": "pv.geojson"
   },
   {
-    "id": "wma",
-    "name": "Western Massachusetts",
-    "short_name": "WMA",
+    "id": "brk",
+    "name": "Berkshires / Western Massachusetts",
+    "short_name": "BRK",
     "region_type": "Regional",
     "coordination_status": "official_new_england",
     "coordination_label": "Official New England Mesh Region",
-    "file": "wma.geojson"
-  },
-  {
-    "id": "brk",
-    "name": "Berkshires / Western Massachusetts Proposal",
-    "short_name": "BRK",
-    "region_type": "Proposed Region",
-    "coordination_status": "proposed",
-    "coordination_label": "Proposed Region",
     "file": "brk.geojson"
   },
   {
@@ -121,8 +112,8 @@
     "name": "Hudson River Valley",
     "short_name": "HUD",
     "region_type": "Adjacent Region - Corridor",
-    "coordination_status": "extrapolated_external",
-    "coordination_label": "Suggested External Region",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
     "file": "hud.geojson"
   },
   {
@@ -139,8 +130,8 @@
     "name": "Erie Canal Corridor",
     "short_name": "ERIE",
     "region_type": "Adjacent Region - Corridor",
-    "coordination_status": "extrapolated_external",
-    "coordination_label": "Suggested External Region",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
     "file": "erie.geojson"
   },
   {
@@ -151,6 +142,15 @@
     "coordination_status": "coordinated_external",
     "coordination_label": "Coordinated External Region",
     "file": "nyc.geojson"
+  },
+  {
+    "id": "li",
+    "name": "Long Island",
+    "short_name": "LI",
+    "region_type": "Adjacent Region - Island",
+    "coordination_status": "coordinated_external",
+    "coordination_label": "Coordinated External Region",
+    "file": "li.geojson"
   },
   {
     "id": "hv",

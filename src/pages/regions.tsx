@@ -4,6 +4,10 @@ import Heading from '@theme/Heading';
 
 import styles from './regions.module.css';
 
+// Keep proposal rendering in place for future coordinator review. With no
+// proposed region codes, proposal-related content is intentionally omitted.
+const proposedRegionCodes: string[] = [];
+
 export default function Regions(): ReactNode {
   return (
     <Layout
@@ -60,7 +64,9 @@ export default function Regions(): ReactNode {
                   Some map regions follow established political or public
                   administrative boundaries rather than New England Mesh-defined
                   boundaries. Current region codes: <code>east</code>, <code>northeast</code>,
-                  and <code>adk</code>.
+                  and <code>adk</code>. The broad multi-state <code>east</code> region is
+                  optional because it is unusual compared with the other, more
+                  geographically focused region codes.
                 </p>
               </article>
               <article className={styles.panel}>
@@ -89,8 +95,8 @@ export default function Regions(): ReactNode {
                 such as <code>bos</code>, <code>ct-rv</code>, <code>hud</code>,
                 <code>adk</code>, and <code>erie</code> are map labels for
                 planning and discussion. The interactive map identifies each
-                region as official, political-boundary, proposed, coordinated
-                external, or suggested external.
+                region as official, political-boundary, coordinated
+                external, or suggested external{proposedRegionCodes.length > 0 && ', or proposed'}.
               </p>
             </article>
 
@@ -102,7 +108,7 @@ export default function Regions(): ReactNode {
                   <p>Regions adopted by New England Mesh through a vote; they may evolve with the group.</p>
                   <div className={styles.codeList}>
                     <code>me</code><code>nh</code><code>vt</code><code>bos</code>
-                    <code>pv</code><code>wma</code><code>ct</code><code>ct-rv</code>
+                    <code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
                     <code>ri</code>
                   </div>
                 </article>
@@ -113,40 +119,31 @@ export default function Regions(): ReactNode {
                     <code>east</code><code>northeast</code><code>adk</code>
                   </div>
                 </article>
-                <article className={`${styles.keyItem} ${styles.proposedKeyItem}`}>
-                  <Heading as="h3">Proposed</Heading>
-                  <p>Regions proposed for coordinator review and not yet adopted as official.</p>
-                  <div className={styles.codeList}>
-                    <code>brk</code>
-                  </div>
-                </article>
+                {proposedRegionCodes.length > 0 && (
+                  <article className={`${styles.keyItem} ${styles.proposedKeyItem}`}>
+                    <Heading as="h3">Proposed</Heading>
+                    <p>Regions proposed for coordinator review and not yet adopted as official.</p>
+                    <div className={styles.codeList}>
+                      {proposedRegionCodes.map((code) => <code key={code}>{code}</code>)}
+                    </div>
+                  </article>
+                )}
                 <article className={styles.keyItem}>
                   <Heading as="h3">Coordinated External</Heading>
                   <p>External regions coordinated with people operating in those areas.</p>
                   <div className={styles.codeList}>
-                    <code>nyc</code><code>alb</code><code>mv</code><code>hv</code>
+                    <code>hud</code><code>erie</code><code>nyc</code><code>li</code>
+                    <code>alb</code><code>mv</code><code>hv</code>
                   </div>
                 </article>
                 <article className={`${styles.keyItem} ${styles.extrapolatedKeyItem}`}>
                   <Heading as="h3">Suggested External</Heading>
                   <p>Suggested coordination areas outside New England, not regions defined by New England Mesh.</p>
                   <div className={styles.codeList}>
-                    <code>erie</code><code>hud</code><code>msv</code>
+                    <code>msv</code>
                   </div>
                 </article>
               </div>
-            </section>
-
-            <section className={styles.proposals} aria-label="Current region proposals">
-              <Heading as="h2">Current Proposals</Heading>
-              <article className={styles.proposalItem}>
-                <Heading as="h3"><code>brk</code> - Berkshires / Western Massachusetts</Heading>
-                <p>
-                  This proposal renames the existing <code>wma</code> region to <code>brk</code>.
-                  Its boundary remains Berkshire County, so it does not add any Pioneer Valley counties
-                  or otherwise change the current Western Massachusetts footprint.
-                </p>
-              </article>
             </section>
 
             <section className={styles.repeaterCli} aria-label="MeshCore repeater CLI commands">

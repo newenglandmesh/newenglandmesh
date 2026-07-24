@@ -33,7 +33,6 @@ Each generated GeoJSON feature includes these properties:
 - `official_new_england` for New England Mesh regions adopted through a vote.
 - `political_boundaries` for regions based on established public or political
   boundaries.
-- `proposed` for regions awaiting coordinator review.
 - `coordinated_external` for external regions developed with local operators.
 - `extrapolated_external` for suggested external regions. The public UI labels
   this status as "Suggested External."
