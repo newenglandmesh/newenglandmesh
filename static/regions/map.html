@@ -1012,7 +1012,18 @@
           if (!entry.file) {
             throw new Error("Every index entry must include a file property");
           }
-          return fetchJson(`${regionPathPrefix}${entry.file}`).then((data) => ({
+          if (!entry.id) {
+            throw new Error("Every index entry must include an id property");
+          }
+          // `file` may be a local filename or an externally hosted GeoJSON URL.
+          // Example external index entry (keep index.json valid JSON, so do not add
+          // this comment there):
+          // { "id": "ny", "name": "New York", "short_name": "NY", "coordination_status": "coordinated_external", "coordination_label": "Coordinated External Region", "file": "https://nyme.sh/regions/ny.geojson" }
+          const regionFileUrl = new URL(
+            entry.file,
+            new URL(regionPathPrefix, window.location.href)
+          ).href;
+          return fetchJson(regionFileUrl).then((data) => ({
             entry,
             data
           }));
@@ -1024,10 +1035,20 @@
 
         response.forEach(({ entry, data }) => {
           (data.features || []).forEach((feature) => {
+            const {
+              coordination_status: _featureCoordinationStatus,
+              coordination_label: _featureCoordinationLabel,
+              coordination_notes: _featureCoordinationNotes,
+              ...featureProperties
+            } = feature.properties || {};
             feature.properties = {
+              ...featureProperties,
+              // The manifest owns region identity and coordination status. This
+              // prevents a remotely hosted GeoJSON file from self-designating
+              // its region as official.
               ...entry,
-              ...(feature.properties || {}),
-              id: regionId(feature.properties || {}, entry.id),
+              id: entry.id,
+              coordination_status: entry.coordination_status || "extrapolated_external",
             };
           });
           loadedRegionFeatures.push(...(data.features || []));

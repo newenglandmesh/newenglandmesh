@@ -55,15 +55,6 @@ def coordination_label_for(status: str) -> str:
     }[status]
 
 
-def coordination_notes_for(status: str) -> str:
-    return {
-        "official_new_england": "This region is within New England and has been voted on by New England Mesh. Boundaries may be adjusted as the group evolves.",
-        "political_boundaries": "This region follows an established political or public administrative boundary rather than a New England Mesh-defined boundary.",
-        "proposed": "This region is proposed for coordinator review and has not been voted into the official New England Mesh region set.",
-        "coordinated_external": "This external region has been coordinated with people operating in that area.",
-        "extrapolated_external": "This is a suggested coordination area, not a boundary defined by New England Mesh.",
-    }[status]
-
 REGIONS = [
     {
         "id": "east",
@@ -449,10 +440,6 @@ def select_region_geometry(
     )
     dissolved["boundary_basis"] = definition["basis"]
     dissolved["notes"] = definition["notes"]
-    coordination_status = definition.get("coordination_status", coordination_status_for(definition["id"]))
-    dissolved["coordination_status"] = coordination_status
-    dissolved["coordination_label"] = coordination_label_for(coordination_status)
-    dissolved["coordination_notes"] = coordination_notes_for(coordination_status)
     dissolved["draft"] = False
     dissolved["source"] = "U.S. Census Bureau 2024 cartographic boundary files"
     return dissolved[
@@ -464,9 +451,6 @@ def select_region_geometry(
             "region_type",
             "boundary_basis",
             "notes",
-            "coordination_status",
-            "coordination_label",
-            "coordination_notes",
             "draft",
             "source",
             "geometry",
@@ -566,7 +550,12 @@ def main() -> None:
 
     write_geojson(regions, OUT / "meshcore_regions.geojson")
     index = []
+    definitions_by_id = {definition["id"]: definition for definition in REGIONS}
     for region_id, row in regions.set_index("id").iterrows():
+        definition = definitions_by_id[region_id]
+        coordination_status = definition.get(
+            "coordination_status", coordination_status_for(region_id)
+        )
         filename = f"{region_id}.geojson"
         write_geojson(regions[regions["id"] == region_id].copy(), OUT / filename)
         index.append(
@@ -575,8 +564,8 @@ def main() -> None:
                 "name": row["name"],
                 "short_name": row["short_name"],
                 "region_type": row["region_type"],
-                "coordination_status": row["coordination_status"],
-                "coordination_label": row["coordination_label"],
+                "coordination_status": coordination_status,
+                "coordination_label": coordination_label_for(coordination_status),
                 "file": filename,
             }
         )

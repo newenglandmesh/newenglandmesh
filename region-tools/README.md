@@ -24,9 +24,11 @@ Each generated GeoJSON feature includes these properties:
 - `id`, `name`, and `short_name` identify the region.
 - `kind` and `region_type` describe the boundary category.
 - `boundary_basis` and `notes` record how the boundary was derived.
-- `coordination_status`, `coordination_label`, and `coordination_notes` describe
-  the region's coordination status for map popups and related UI.
 - `draft` and `source` record publication state and boundary data provenance.
+
+Coordination status is intentionally kept only in `static/regions/index.json`.
+The manifest is authoritative for the public status shown by the viewer; GeoJSON
+files supply boundaries and descriptive/provenance fields only.
 
 `coordination_status` uses these stable values:
 
