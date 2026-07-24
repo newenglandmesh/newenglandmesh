@@ -1,0 +1,25 @@
+{
+  "title": "New England Mesh Region Map",
+  "regions": [
+    {"id": "east", "optional": true, "visible": false},
+    {"id": "northeast", "visible": false},
+    {"id": "me"},
+    {"id": "nh"},
+    {"id": "vt"},
+    {"id": "bos"},
+    {"id": "pv"},
+    {"id": "brk"},
+    {"id": "ct"},
+    {"id": "ct-rv"},
+    {"id": "ri"},
+    {"id": "msv"},
+    {"id": "hud"},
+    {"id": "adk"},
+    {"id": "erie"},
+    {"id": "nyc"},
+    {"id": "li"},
+    {"id": "hv"},
+    {"id": "alb"},
+    {"id": "mv"}
+  ]
+}

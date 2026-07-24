@@ -8,6 +8,8 @@ written directly to `static/regions/`; they are not duplicated here.
 
 - `build_census_boundaries.py` downloads the Census state and county inputs.
 - `build_meshcore_regions.py` builds the region GeoJSON and its manifest.
+- `region_manifest.json` provides non-derived map settings such as the title
+  and initial layer visibility; the builder uses it to generate `index.json`.
 - `census_*.geojson` are local Census-derived inputs used by the builder.
 - `sources/` contains source geometry that is not provided by Census inputs.
 - `requirements.txt` lists the Python dependencies.
