@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent / "static" / "regions"
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCES = ROOT / "sources"
+MANIFEST_CONFIG = ROOT / "region_manifest.json"
 ADIRONDACK_RAW = SOURCES / "adirondack_park_boundary_raw.geojson"
 ADIRONDACK_EXCLUSION = SOURCES / "adirondack_park_exclusion.geojson"
 
@@ -53,6 +54,40 @@ def coordination_label_for(status: str) -> str:
         "coordinated_external": "Coordinated External Region",
         "extrapolated_external": "Suggested External Region",
     }[status]
+
+
+def read_manifest_config(region_ids: list[str]) -> dict:
+    """Read non-derived viewer settings used when generating index.json."""
+    config = json.loads(MANIFEST_CONFIG.read_text(encoding="utf-8"))
+    title = config.get("title")
+    entries = config.get("regions")
+    if not isinstance(title, str) or not title:
+        raise ValueError("region_manifest.json must contain a non-empty title")
+    if not isinstance(entries, list):
+        raise ValueError("region_manifest.json must contain a regions array")
+
+    settings_by_id = {}
+    for entry in entries:
+        if not isinstance(entry, dict) or not isinstance(entry.get("id"), str):
+            raise ValueError("Every region_manifest.json entry must contain an id")
+        region_id = entry["id"]
+        if region_id in settings_by_id:
+            raise ValueError(f"Duplicate region manifest entry: {region_id}")
+        settings_by_id[region_id] = {
+            key: entry[key] for key in ("optional", "visible") if key in entry
+        }
+
+    expected_ids = set(region_ids)
+    configured_ids = set(settings_by_id)
+    if configured_ids != expected_ids:
+        missing = ", ".join(sorted(expected_ids - configured_ids))
+        extra = ", ".join(sorted(configured_ids - expected_ids))
+        details = ", ".join(
+            value for value in (f"missing: {missing}" if missing else "", f"extra: {extra}" if extra else "") if value
+        )
+        raise ValueError(f"region_manifest.json region IDs do not match REGIONS ({details})")
+
+    return {"title": title, "settings_by_id": settings_by_id}
 
 
 REGIONS = [
@@ -516,6 +551,7 @@ def validate_new_england_coverage(
 
 
 def main() -> None:
+    manifest_config = read_manifest_config([definition["id"] for definition in REGIONS])
     states, ne_states, counties = read_inputs()
     adirondack_exclusion = normalize_adirondack_exclusion()
     for old_output in OUT.glob("*.geojson"):
@@ -557,8 +593,7 @@ def main() -> None:
         )
         filename = f"{region_id}.geojson"
         write_geojson(regions[regions["id"] == region_id].copy(), OUT / filename)
-        index.append(
-            {
+        entry = {
                 "id": region_id,
                 "name": row["name"],
                 "short_name": row["short_name"],
@@ -566,12 +601,14 @@ def main() -> None:
                 "coordination_status": coordination_status,
                 "coordination_label": coordination_label_for(coordination_status),
                 "file": filename,
-            }
-        )
+        }
+        entry.update(manifest_config["settings_by_id"][region_id])
+        index.append(entry)
 
     report = validate_new_england_coverage(regions, ne_states)
     (ROOT / "validation_report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
-    (OUT / "index.json").write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
+    manifest = {"title": manifest_config["title"], "regions": index}
+    (OUT / "index.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(regions)} region files to {OUT}")
 
 
