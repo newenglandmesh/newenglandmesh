@@ -4,9 +4,7 @@ import Heading from '@theme/Heading';
 
 import styles from './regions.module.css';
 
-// Keep proposal rendering in place for future coordinator review. With no
-// proposed region codes, proposal-related content is intentionally omitted.
-const proposedRegionCodes: string[] = [];
+const proposedRegionCodes = ['erie'];
 
 export default function Regions(): ReactNode {
   return (
@@ -95,8 +93,8 @@ export default function Regions(): ReactNode {
                 such as <code>bos</code>, <code>ct-rv</code>, <code>hud</code>,
                 <code>adk</code>, and <code>erie</code> are map labels for
                 planning and discussion. The interactive map identifies each
-                region as official, political-boundary, coordinated
-                external, or suggested external{proposedRegionCodes.length > 0 && ', or proposed'}.
+                region as official, political-boundary, proposed, coordinated
+                external, or suggested external.
               </p>
             </article>
 
@@ -132,7 +130,7 @@ export default function Regions(): ReactNode {
                   <Heading as="h3">Coordinated External</Heading>
                   <p>External regions coordinated with people operating in those areas.</p>
                   <div className={styles.codeList}>
-                    <code>hud</code><code>erie</code><code>nyc</code><code>li</code>
+                    <code>hud</code><code>nyc</code><code>li</code>
                     <code>alb</code><code>mv</code><code>hv</code>
                   </div>
                 </article>

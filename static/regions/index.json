@@ -135,9 +135,10 @@
       "name": "Erie Canal Corridor",
       "short_name": "ERIE",
       "region_type": "Adjacent Region - Corridor",
-      "coordination_status": "coordinated_external",
-      "coordination_label": "Coordinated External Region",
-      "file": "erie.geojson"
+      "coordination_status": "proposed",
+      "coordination_label": "Proposed Region",
+      "file": "erie.geojson",
+      "visible": false
     },
     {
       "id": "nyc",
