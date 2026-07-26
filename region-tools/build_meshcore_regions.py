@@ -30,8 +30,8 @@ OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "bos", "pv", "brk", "ct", "
 POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "adk"}
 # Keep this collection even when there are no current proposals. Adding an ID
 # here restores its generated proposed-region metadata automatically.
-PROPOSED_REGION_IDS: set[str] = set()
-COORDINATED_EXTERNAL_REGION_IDS = {"hud", "erie", "nyc", "li", "alb", "mv", "hv"}
+PROPOSED_REGION_IDS = {"erie"}
+COORDINATED_EXTERNAL_REGION_IDS = {"hud", "nyc", "li", "alb", "mv", "hv"}
 
 
 def coordination_status_for(region_id: str) -> str:
@@ -74,7 +74,9 @@ def read_manifest_config(region_ids: list[str]) -> dict:
         if region_id in settings_by_id:
             raise ValueError(f"Duplicate region manifest entry: {region_id}")
         settings_by_id[region_id] = {
-            key: entry[key] for key in ("optional", "visible") if key in entry
+            key: entry[key]
+            for key in ("optional", "visible", "coordinator")
+            if key in entry
         }
 
     expected_ids = set(region_ids)
@@ -588,11 +590,15 @@ def main() -> None:
     definitions_by_id = {definition["id"]: definition for definition in REGIONS}
     for region_id, row in regions.set_index("id").iterrows():
         definition = definitions_by_id[region_id]
+        settings = manifest_config["settings_by_id"][region_id]
         coordination_status = definition.get(
             "coordination_status", coordination_status_for(region_id)
         )
+        coordinator = settings.get("coordinator", "")
         filename = f"{region_id}.geojson"
-        write_geojson(regions[regions["id"] == region_id].copy(), OUT / filename)
+        region_geojson = regions[regions["id"] == region_id].copy()
+        region_geojson["coordinator"] = coordinator
+        write_geojson(region_geojson, OUT / filename)
         entry = {
                 "id": region_id,
                 "name": row["name"],
@@ -602,7 +608,9 @@ def main() -> None:
                 "coordination_label": coordination_label_for(coordination_status),
                 "file": filename,
         }
-        entry.update(manifest_config["settings_by_id"][region_id])
+        entry.update(
+            {key: value for key, value in settings.items() if key != "coordinator"}
+        )
         index.append(entry)
 
     report = validate_new_england_coverage(regions, ne_states)

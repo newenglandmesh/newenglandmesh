@@ -5,8 +5,8 @@ copy `map.html`, publish an `index.json` beside it, and host each referenced
 GeoJSON file locally or on a separate HTTPS origin.
 
 `index.json` is the public authority for the map title and each region's
-identity and coordination status. GeoJSON supplies geometry and optional
-descriptive/provenance data; its coordination fields are ignored by the viewer.
+identity and coordination status. GeoJSON supplies geometry, coordinator data,
+and optional descriptive/provenance data.
 
 ## `index.json`
 
@@ -92,6 +92,7 @@ One or more polygon or multipolygon features are typical:
       "type": "Feature",
       "properties": {
         "boundary_basis": "Coordinator-defined operating area",
+        "coordinator": "mesh-coordinator",
         "notes": "Reviewed July 2026",
         "source": "Example Mesh regional coordinators"
       },
@@ -104,9 +105,11 @@ One or more polygon or multipolygon features are typical:
 }
 ```
 
-Feature properties such as `kind`, `boundary_basis`, `notes`, `draft`, and
-`source` may be included. When both the manifest and a feature contain the same
-ordinary property, the manifest value wins.
+Feature properties such as `kind`, `boundary_basis`, `notes`, `draft`,
+`source`, and `coordinator` may be included. The GeoJSON `coordinator` value is
+authoritative and is shown as plain text in popups; the viewer ignores a
+coordinator value in `index.json`. For other ordinary properties, the manifest
+value wins when both sources provide one.
 
 Do not use `coordination_status`, `coordination_label`, or
 `coordination_notes` in GeoJSON to declare public status. The viewer discards

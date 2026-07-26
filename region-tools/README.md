@@ -8,8 +8,9 @@ written directly to `static/regions/`; they are not duplicated here.
 
 - `build_census_boundaries.py` downloads the Census state and county inputs.
 - `build_meshcore_regions.py` builds the region GeoJSON and its manifest.
-- `region_manifest.json` provides non-derived map settings such as the title
-  and initial layer visibility; the builder uses it to generate `index.json`.
+- `region_manifest.json` provides non-derived map settings such as the title,
+  initial layer visibility, and coordinator strings; the builder writes the
+  coordinator strings to region GeoJSON properties.
 - `census_*.geojson` are local Census-derived inputs used by the builder.
 - `sources/` contains source geometry that is not provided by Census inputs.
 - `requirements.txt` lists the Python dependencies.
@@ -26,11 +27,12 @@ Each generated GeoJSON feature includes these properties:
 - `id`, `name`, and `short_name` identify the region.
 - `kind` and `region_type` describe the boundary category.
 - `boundary_basis` and `notes` record how the boundary was derived.
+- `coordinator` is Discord username, email address, or callsign.
 - `draft` and `source` record publication state and boundary data provenance.
 
 Coordination status is intentionally kept only in `static/regions/index.json`.
-The manifest is authoritative for the public status shown by the viewer; GeoJSON
-files supply boundaries and descriptive/provenance fields only.
+The manifest is authoritative for the public status shown by the viewer. GeoJSON
+files supply boundaries, descriptive/provenance fields, and coordinator data.
 
 `coordination_status` uses these stable values:
 
@@ -38,6 +40,7 @@ files supply boundaries and descriptive/provenance fields only.
 - `political_boundaries` for regions based on established public or political
   boundaries.
 - `coordinated_external` for external regions developed with local operators.
+- `proposed` for regions still in planning.
 - `extrapolated_external` for suggested external regions. The public UI labels
   this status as "Suggested External."
 

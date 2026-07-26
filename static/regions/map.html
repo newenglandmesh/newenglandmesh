@@ -951,6 +951,9 @@
           ${matches.map((props) => {
             const id = regionId(props);
             const color = colorFor(id);
+            const coordinator = props.coordinator
+              ? `<span>Coordinator: ${escapeHtml(props.coordinator)}</span>`
+              : "";
             return `
               <li>
                 <span class="${swatchClass(props)}" style="color: ${color}; background-color: ${color}33"></span>
@@ -958,6 +961,7 @@
                   <strong class="popup-region-name"><code class="region-code">${regionCode(props)}</code>${props.optional ? " (Optional)" : ""} - ${props.name}</strong>
                   <span>${regionTypeLabel(props)}</span>
                   <span class="coordination-badge ${coordinationClass(props)}">${coordinationLabel(props)}</span>
+                  ${coordinator}
                 </div>
               </li>
             `;
@@ -1051,6 +1055,7 @@
         const legendRows = document.getElementById("legendRows");
 
         response.forEach(({ entry, data }) => {
+          const { coordinator: _entryCoordinator, ...entryProperties } = entry;
           (data.features || []).forEach((feature) => {
             const {
               coordination_status: _featureCoordinationStatus,
@@ -1063,7 +1068,7 @@
               // The manifest owns region identity and coordination status. This
               // prevents a remotely hosted GeoJSON file from self-designating
               // its region as official.
-              ...entry,
+              ...entryProperties,
               id: entry.id,
               coordination_status: entry.coordination_status || "extrapolated_external",
             };
