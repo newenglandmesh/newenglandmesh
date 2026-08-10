@@ -33,9 +33,9 @@
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
-    "@types/react": "^19.0.0",
+    "@types/react": "^19.2.18",
     "typescript": "~7.0.2",
-    "wrangler": "4.114.0"
+    "wrangler": "4.117.0"
   },
   "overrides": {
     "esbuild": "0.28.1",
