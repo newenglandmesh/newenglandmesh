@@ -87,6 +87,30 @@ export default function Regions(): ReactNode {
             </div>
 
             <article className={`${styles.panel} ${styles.notice}`}>
+              <Heading as="h2">Emergency-only umbrella regions</Heading>
+              <p>
+                The broad <code>east</code> and <code>northeast</code> regions are
+                intended for emergency communications across regional boundaries,
+                not routine chat or default nationwide forwarding. Emergency use
+                means an imminent threat to life or property. Use your local
+                region for ordinary traffic.
+              </p>
+              <p>
+                Coordinate with repeater operators before relying on either
+                umbrella region: a boundary on this map does not guarantee
+                forwarding or coverage. Preparedness tests should be coordinated
+                in advance. Repeated misuse may lead operators to disable
+                forwarding for these regions.
+              </p>
+              <p>
+                Wildcard forwarding (<code>*</code>) is currently retained during
+                region adoption; it is not the intended long-term substitute for
+                regional routing. Reminder bots and future forwarding restrictions
+                are proposals, not protections implemented by this website.
+              </p>
+            </article>
+
+            <article className={`${styles.panel} ${styles.notice}`}>
               <Heading as="h2">Before using a region code</Heading>
               <p>
                 Coordinate with the people operating in that area. Region codes
