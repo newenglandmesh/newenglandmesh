@@ -50,6 +50,15 @@
       "file": "vt.geojson"
     },
     {
+      "id": "ma",
+      "name": "Massachusetts",
+      "short_name": "MA",
+      "region_type": "State Region",
+      "coordination_status": "official_new_england",
+      "coordination_label": "Official New England Mesh Region",
+      "file": "ma.geojson"
+    },
+    {
       "id": "bos",
       "name": "Boston / Eastern Massachusetts",
       "short_name": "BOS",

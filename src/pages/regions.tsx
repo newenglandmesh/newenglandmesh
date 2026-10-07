@@ -53,7 +53,10 @@ export default function Regions(): ReactNode {
                   New England Mesh is responsible for defining the regions within
                   New England: Connecticut, Rhode Island, Massachusetts, Vermont,
                   New Hampshire, Maine, and their coordinated subregions. These
-                  areas were adopted by vote and may change as the group evolves.
+                  regions may change as the group evolves. The statewide <code>ma</code>
+                  region covers all Massachusetts; <code>bos</code> remains the
+                  primary Boston / Eastern Massachusetts region and does not
+                  extend into New Hampshire.
                 </p>
               </article>
               <article className={styles.panel}>
@@ -87,6 +90,34 @@ export default function Regions(): ReactNode {
             </div>
 
             <article className={`${styles.panel} ${styles.notice}`}>
+              <Heading as="h2">Emergency-only umbrella regions</Heading>
+              <p>
+                The broad <code>east</code> and <code>northeast</code> regions are
+                intended for emergency communications across regional boundaries,
+                not routine chat or default nationwide forwarding. Emergency use
+                means an imminent threat to life or property. Use your local
+                region for ordinary traffic.
+              </p>
+              <p>
+                Coordinate with repeater operators before relying on either
+                umbrella region: a boundary on this map does not guarantee
+                forwarding or coverage. Preparedness tests should be coordinated
+                in advance. Repeated misuse may lead operators to disable
+                forwarding for these regions.
+              </p>
+              <p>
+                Wildcard forwarding (<code>*</code>) is currently required on all
+                repeaters for remote management of distant repeaters. Keep it
+                enabled; it cannot currently be removed as part of region
+                adoption or emergency-channel policy. The emergency-only guidance
+                applies to <code>east</code> and <code>northeast</code>, not to
+                disabling the wildcard region. Reminder bots and restrictions on
+                those umbrella regions are proposals, not protections implemented
+                by this website.
+              </p>
+            </article>
+
+            <article className={`${styles.panel} ${styles.notice}`}>
               <Heading as="h2">Before using a region code</Heading>
               <p>
                 Coordinate with the people operating in that area. Region codes
@@ -103,9 +134,9 @@ export default function Regions(): ReactNode {
               <div className={styles.keyGrid}>
                 <article className={styles.keyItem}>
                   <Heading as="h3">Official New England</Heading>
-                  <p>Regions adopted by New England Mesh through a vote; they may evolve with the group.</p>
+                  <p>Official New England Mesh coordination regions; they may evolve with the group.</p>
                   <div className={styles.codeList}>
-                    <code>me</code><code>nh</code><code>vt</code><code>bos</code>
+                    <code>me</code><code>nh</code><code>vt</code><code>ma</code><code>bos</code>
                     <code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
                     <code>ri</code>
                   </div>
@@ -153,7 +184,9 @@ region allowf <region-code>
 region allowf *
 region save`}</code></pre>
                 <p>
-                  Wildcard forwarding remains enabled. See the{' '}
+                  Wildcard forwarding is required on all repeaters for remote
+                  management of distant repeaters. Keep <code>region allowf *</code>
+                  enabled and save the configuration. See the{' '}
                   <a href="https://docs.meshcore.io/cli_commands/">MeshCore CLI reference</a>
                   {' '}for the full command set.
                 </p>
