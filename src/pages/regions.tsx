@@ -106,10 +106,14 @@ export default function Regions(): ReactNode {
                 forwarding for these regions.
               </p>
               <p>
-                Wildcard forwarding (<code>*</code>) is currently retained during
-                region adoption; it is not the intended long-term substitute for
-                regional routing. Reminder bots and future forwarding restrictions
-                are proposals, not protections implemented by this website.
+                Wildcard forwarding (<code>*</code>) is currently required on all
+                repeaters for remote management of distant repeaters. Keep it
+                enabled; it cannot currently be removed as part of region
+                adoption or emergency-channel policy. The emergency-only guidance
+                applies to <code>east</code> and <code>northeast</code>, not to
+                disabling the wildcard region. Reminder bots and restrictions on
+                those umbrella regions are proposals, not protections implemented
+                by this website.
               </p>
             </article>
 
@@ -180,7 +184,9 @@ region allowf <region-code>
 region allowf *
 region save`}</code></pre>
                 <p>
-                  Wildcard forwarding remains enabled. See the{' '}
+                  Wildcard forwarding is required on all repeaters for remote
+                  management of distant repeaters. Keep <code>region allowf *</code>
+                  enabled and save the configuration. See the{' '}
                   <a href="https://docs.meshcore.io/cli_commands/">MeshCore CLI reference</a>
                   {' '}for the full command set.
                 </p>
