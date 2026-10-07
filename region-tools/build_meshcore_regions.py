@@ -26,8 +26,8 @@ ADIRONDACK_RAW = SOURCES / "adirondack_park_boundary_raw.geojson"
 ADIRONDACK_EXCLUSION = SOURCES / "adirondack_park_exclusion.geojson"
 
 NE_STATES = {"CT", "RI", "MA", "VT", "NH", "ME"}
-OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "bos", "pv", "brk", "ct", "ct-rv", "ri"}
-POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "ma", "adk"}
+OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "ma", "bos", "pv", "brk", "ct", "ct-rv", "ri"}
+POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "adk"}
 # Keep this collection even when there are no current proposals. Adding an ID
 # here restores its generated proposed-region metadata automatically.
 PROPOSED_REGION_IDS = {"erie"}
@@ -157,9 +157,8 @@ REGIONS = [
         "basis": "Community consensus boundary represented by U.S. Census county boundaries",
         "counties": {
             "MA": ["Barnstable", "Bristol", "Dukes", "Essex", "Middlesex", "Nantucket", "Norfolk", "Plymouth", "Suffolk", "Worcester"],
-            "NH": ["Hillsborough", "Merrimack", "Rockingham", "Strafford"],
         },
-        "notes": "Eastern Massachusetts plus southern/eastern New Hampshire; overlaps BRK, NH, RI, and CT-RV.",
+        "notes": "Primary region for Boston / Eastern Massachusetts, entirely within Massachusetts; overlaps the statewide MA region.",
     },
     {
         "id": "pv",

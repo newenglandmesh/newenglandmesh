@@ -85,8 +85,14 @@ before connecting an observer:
   Observer / Gateway Setup and MQTT guidance for New Hampshire deployments.
 - **Maine Mesh:** [Maine Mesh observer
   configuration](https://github.com/deejdeej/MaineMesh-Meshcore/blob/main/observer/README.md).
-  Maine's documented `BGR` observer configuration publishes to the Greater
-  Boston Mesh broker in addition to its other monitoring destinations.
+  Maine has a [combined multi-region MeshMapper map](https://maine.meshmapper.net/),
+  with [BGR — Maine Statewide](https://bgr.meshmapper.net/) and
+  [RKD — Knox County](https://rkd.meshmapper.net/). The linked observer guide
+  provides a `BGR` example; that is not Maine's only MeshMapper/IATA code.
+  Confirm the appropriate code with local operators, especially for Knox County.
+  MeshMapper/IATA identifiers are separate from the `me` MeshCore coordination
+  region. The documented observer example publishes to the Greater Boston Mesh
+  broker in addition to its other monitoring destinations.
 
 Broker credentials and connection requirements can change. Use the linked
 community documentation rather than copying credentials into this site.

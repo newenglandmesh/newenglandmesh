@@ -13,6 +13,7 @@ type Community = {
   discord?: string;
   live?: {label: string; href: string};
   meshMapper?: {label: string; href: string};
+  meshMapperRegions?: {label: string; href: string}[];
   coreScope?: {label: string; href: string};
 };
 
@@ -59,7 +60,11 @@ const statewideCommunities: Community[] = [
     description: 'Maine’s broader LoRa mesh community on GitHub; members operate both Meshtastic and MeshCore infrastructure and coordinate through Discord and Facebook.',
     website: 'https://github.com/JFRHorton/MaineMesh',
     discord: 'https://discord.gg/2Uhz4AzB8E',
-    meshMapper: {label: 'BGR · Maine Statewide', href: 'https://bgr.meshmapper.net/'},
+    meshMapper: {label: 'MAINE · Combined statewide map', href: 'https://maine.meshmapper.net/'},
+    meshMapperRegions: [
+      {label: 'BGR · Maine Statewide', href: 'https://bgr.meshmapper.net/'},
+      {label: 'RKD · Knox County', href: 'https://rkd.meshmapper.net/'},
+    ],
   },
 ];
 
@@ -229,6 +234,12 @@ function CommunityCard({community}: {community: Community}): ReactNode {
             <dd><a href={community.meshMapper.href} target="_blank" rel="noopener noreferrer">{community.meshMapper.label}</a></dd>
           </div>
         )}
+        {community.meshMapperRegions?.map((region) => (
+          <div key={region.href}>
+            <dt>MeshMapper region</dt>
+            <dd><a href={region.href} target="_blank" rel="noopener noreferrer">{region.label}</a></dd>
+          </div>
+        ))}
         {community.coreScope && (
           <div>
             <dt>CoreScope</dt>

@@ -53,7 +53,10 @@ export default function Regions(): ReactNode {
                   New England Mesh is responsible for defining the regions within
                   New England: Connecticut, Rhode Island, Massachusetts, Vermont,
                   New Hampshire, Maine, and their coordinated subregions. These
-                  areas were adopted by vote and may change as the group evolves.
+                  regions may change as the group evolves. The statewide <code>ma</code>
+                  region covers all Massachusetts; <code>bos</code> remains the
+                  primary Boston / Eastern Massachusetts region and does not
+                  extend into New Hampshire.
                 </p>
               </article>
               <article className={styles.panel}>
@@ -62,7 +65,7 @@ export default function Regions(): ReactNode {
                   Some map regions follow established political or public
                   administrative boundaries rather than New England Mesh-defined
                   boundaries. Current region codes: <code>east</code>, <code>northeast</code>,
-                  <code>ma</code>, and <code>adk</code>. The broad multi-state <code>east</code> region is
+                  and <code>adk</code>. The broad multi-state <code>east</code> region is
                   optional because it is unusual compared with the other, more
                   geographically focused region codes.
                 </p>
@@ -127,9 +130,9 @@ export default function Regions(): ReactNode {
               <div className={styles.keyGrid}>
                 <article className={styles.keyItem}>
                   <Heading as="h3">Official New England</Heading>
-                  <p>Regions adopted by New England Mesh through a vote; they may evolve with the group.</p>
+                  <p>Official New England Mesh coordination regions; they may evolve with the group.</p>
                   <div className={styles.codeList}>
-                    <code>me</code><code>nh</code><code>vt</code><code>bos</code>
+                    <code>me</code><code>nh</code><code>vt</code><code>ma</code><code>bos</code>
                     <code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
                     <code>ri</code>
                   </div>
@@ -138,7 +141,7 @@ export default function Regions(): ReactNode {
                   <Heading as="h3">Political Boundaries</Heading>
                   <p>Regions based on established political or public administrative boundaries.</p>
                   <div className={styles.codeList}>
-                    <code>east</code><code>northeast</code><code>ma</code><code>adk</code>
+                    <code>east</code><code>northeast</code><code>adk</code>
                   </div>
                 </article>
                 {proposedRegionCodes.length > 0 && (
