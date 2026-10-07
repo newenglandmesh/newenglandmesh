@@ -27,7 +27,7 @@ ADIRONDACK_EXCLUSION = SOURCES / "adirondack_park_exclusion.geojson"
 
 NE_STATES = {"CT", "RI", "MA", "VT", "NH", "ME"}
 OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "bos", "pv", "brk", "ct", "ct-rv", "ri"}
-POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "adk"}
+POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "ma", "adk"}
 # Keep this collection even when there are no current proposals. Adding an ID
 # here restores its generated proposed-region metadata automatically.
 PROPOSED_REGION_IDS = {"erie"}
@@ -139,6 +139,15 @@ REGIONS = [
         "basis": "Existing political boundary represented by a U.S. Census state boundary",
         "states": ["VT"],
         "notes": "Covers all terrestrial Vermont.",
+    },
+    {
+        "id": "ma",
+        "name": "Massachusetts",
+        "short_name": "MA",
+        "kind": "state_region",
+        "basis": "Existing political boundary represented by a U.S. Census state boundary",
+        "states": ["MA"],
+        "notes": "Covers all terrestrial Massachusetts; overlaps BOS, PV, BRK, and CT-RV.",
     },
     {
         "id": "bos",

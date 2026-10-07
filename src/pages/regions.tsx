@@ -62,7 +62,7 @@ export default function Regions(): ReactNode {
                   Some map regions follow established political or public
                   administrative boundaries rather than New England Mesh-defined
                   boundaries. Current region codes: <code>east</code>, <code>northeast</code>,
-                  and <code>adk</code>. The broad multi-state <code>east</code> region is
+                  <code>ma</code>, and <code>adk</code>. The broad multi-state <code>east</code> region is
                   optional because it is unusual compared with the other, more
                   geographically focused region codes.
                 </p>
@@ -114,7 +114,7 @@ export default function Regions(): ReactNode {
                   <Heading as="h3">Political Boundaries</Heading>
                   <p>Regions based on established political or public administrative boundaries.</p>
                   <div className={styles.codeList}>
-                    <code>east</code><code>northeast</code><code>adk</code>
+                    <code>east</code><code>northeast</code><code>ma</code><code>adk</code>
                   </div>
                 </article>
                 {proposedRegionCodes.length > 0 && (

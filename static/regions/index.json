@@ -50,6 +50,15 @@
       "file": "vt.geojson"
     },
     {
+      "id": "ma",
+      "name": "Massachusetts",
+      "short_name": "MA",
+      "region_type": "State Region",
+      "coordination_status": "political_boundaries",
+      "coordination_label": "Political Boundaries",
+      "file": "ma.geojson"
+    },
+    {
       "id": "bos",
       "name": "Boston / Eastern Massachusetts",
       "short_name": "BOS",
