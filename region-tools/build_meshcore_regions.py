@@ -26,7 +26,7 @@ ADIRONDACK_RAW = SOURCES / "adirondack_park_boundary_raw.geojson"
 ADIRONDACK_EXCLUSION = SOURCES / "adirondack_park_exclusion.geojson"
 
 NE_STATES = {"CT", "RI", "MA", "VT", "NH", "ME"}
-OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "ma", "bos", "pv", "brk", "ct", "ct-rv", "ri"}
+OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "ma", "bos", "fbg", "northbridge", "pv", "brk", "ct", "ct-rv", "ri"}
 POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "adk"}
 # Keep this collection even when there are no current proposals. Adding an ID
 # here restores its generated proposed-region metadata automatically.
@@ -147,7 +147,7 @@ REGIONS = [
         "kind": "state_region",
         "basis": "Existing political boundary represented by a U.S. Census state boundary",
         "states": ["MA"],
-        "notes": "Covers all terrestrial Massachusetts; overlaps BOS, PV, BRK, and CT-RV.",
+        "notes": "Covers all terrestrial Massachusetts; overlaps BOS, FBG, PV, BRK, and CT-RV.",
     },
     {
         "id": "bos",
@@ -158,7 +158,31 @@ REGIONS = [
         "counties": {
             "MA": ["Barnstable", "Bristol", "Dukes", "Essex", "Middlesex", "Nantucket", "Norfolk", "Plymouth", "Suffolk", "Worcester"],
         },
-        "notes": "Primary region for Boston / Eastern Massachusetts, entirely within Massachusetts; overlaps the statewide MA region.",
+        "notes": "Primary region for Boston / Eastern Massachusetts, entirely within Massachusetts; overlaps the statewide MA region and contains FBG.",
+    },
+    {
+        "id": "fbg",
+        "name": "Fitchburg, MA",
+        "short_name": "FBG",
+        "kind": "city_region",
+        "region_type": "Municipal Regions",
+        "basis": "Existing political boundary represented by a U.S. Census county subdivision boundary",
+        "towns": {
+            "MA": ["Fitchburg"],
+        },
+        "notes": "Covers the City of Fitchburg; overlaps BOS and the statewide MA region.",
+    },
+    {
+        "id": "northbridge",
+        "name": "Northbridge, MA",
+        "short_name": "NORTHBRIDGE",
+        "kind": "city_region",
+        "region_type": "Municipal Regions",
+        "basis": "Existing political boundary represented by a U.S. Census county subdivision boundary",
+        "towns": {
+            "MA": ["Northbridge"],
+        },
+        "notes": "Covers the Town of Northbridge; overlaps BOS and the statewide MA region.",
     },
     {
         "id": "pv",
@@ -344,11 +368,12 @@ REGIONS = [
 ]
 
 
-def read_inputs() -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame, gpd.GeoDataFrame]:
+def read_inputs() -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame, gpd.GeoDataFrame, gpd.GeoDataFrame]:
     states = gpd.read_file(ROOT / "census_east_extended_states.geojson").to_crs(4326)
     ne_states = gpd.read_file(ROOT / "census_northeast_states.geojson").to_crs(4326)
     counties = gpd.read_file(ROOT / "census_northeast_counties.geojson").to_crs(4326)
-    return states, ne_states, counties
+    towns = gpd.read_file(ROOT / "census_towns.geojson").to_crs(4326)
+    return states, ne_states, counties, towns
 
 
 def normalize_adirondack_exclusion() -> gpd.GeoDataFrame:
@@ -383,6 +408,7 @@ def select_region_geometry(
     definition: dict,
     states: gpd.GeoDataFrame,
     counties: gpd.GeoDataFrame,
+    towns: gpd.GeoDataFrame,
     built_regions: dict[str, gpd.GeoDataFrame],
     adirondack_exclusion: gpd.GeoDataFrame,
 ) -> gpd.GeoDataFrame:
@@ -429,8 +455,19 @@ def select_region_geometry(
                 raise ValueError(f"{definition['id']} references missing {state_abbr} counties: {sorted(missing)}")
             selected.append(county_subset)
 
+    if "towns" in definition:
+        for state_abbr, town_names in definition["towns"].items():
+            statefp = states.loc[states["STUSPS"] == state_abbr, "STATEFP"]
+            if statefp.empty:
+                raise ValueError(f"State {state_abbr} is not available in generated boundaries")
+            state_towns = towns[towns["STATEFP"] == statefp.iloc[0]]
+            missing = set(town_names) - set(state_towns["NAME"])
+            if missing:
+                raise ValueError(f"{definition['id']} references missing {state_abbr} towns: {sorted(missing)}")
+            selected.append(state_towns[state_towns["NAME"].isin(town_names)][["geometry"]])
+
     if not selected:
-        raise ValueError(f"{definition['id']} has no state or county selector")
+        raise ValueError(f"{definition['id']} has no state, county, or town selector")
 
     rows = pd.concat(selected, ignore_index=True)
     if rows.empty:
@@ -562,7 +599,7 @@ def validate_new_england_coverage(
 
 def main() -> None:
     manifest_config = read_manifest_config([definition["id"] for definition in REGIONS])
-    states, ne_states, counties = read_inputs()
+    states, ne_states, counties, towns = read_inputs()
     adirondack_exclusion = normalize_adirondack_exclusion()
     for old_output in OUT.glob("*.geojson"):
         old_output.unlink()
@@ -581,6 +618,7 @@ def main() -> None:
                 definition,
                 states,
                 counties,
+                towns,
                 built_regions,
                 adirondack_exclusion,
             )

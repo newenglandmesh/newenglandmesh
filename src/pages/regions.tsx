@@ -41,8 +41,8 @@ export default function Regions(): ReactNode {
               <article className={styles.panel}>
                 <Heading as="h2">What the map shows</Heading>
                 <p>
-                  Boundaries are generated mostly from U.S. Census state and
-                  county cartographic files, with special source data where
+                  Boundaries are generated mostly from U.S. Census state,
+                  county, and town cartographic files, with special source data where
                   noted. They are intended for coordination, not legal,
                   regulatory, or emergency service boundaries.
                 </p>
@@ -137,7 +137,7 @@ export default function Regions(): ReactNode {
                   <p>Official New England Mesh coordination regions; they may evolve with the group.</p>
                   <div className={styles.codeList}>
                     <code>me</code><code>nh</code><code>vt</code><code>ma</code><code>bos</code>
-                    <code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
+                    <code>fbg</code><code>northbridge</code><code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
                     <code>ri</code>
                   </div>
                 </article>

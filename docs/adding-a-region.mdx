@@ -1,0 +1,207 @@
+---
+sidebar_position: 4
+---
+
+# Adding a region
+
+Use this guide to add a MeshCore coordination region to the [region map](/regions).
+Region definitions, coordinator settings, and generated map files must stay in
+sync. Submit changes through a pull request targeting `staging`.
+
+For the tooling reference and source-data layout, see the
+[Region Tools README on main](https://github.com/newenglandmesh/newenglandmesh/blob/main/region-tools/README.md).
+This guide describes the contribution workflow on `staging`; features there may
+not yet be present in the published `main` branch.
+
+## 1. Agree on the region
+
+Before editing, coordinate with the community operating in the area and establish:
+
+- A unique region code, such as `northbridge`.
+- A display name that identifies the place; municipal names include the state,
+  such as `Northbridge, MA`.
+- The intended boundary and its source—not just a coverage estimate.
+- The coordinators and their public usernames or callsigns.
+- Whether the region is proposed, officially adopted, or coordinated externally.
+
+A Census boundary describes geography; it does not make a region official.
+Only use official status after New England Mesh has approved the region.
+Do not publish private node locations, credentials, or contact details without
+permission. Keep overlapping municipal, metro, and statewide regions rather
+than replacing broader regions with a new local one.
+
+## 2. Prepare a working branch
+
+From your clone or fork of the repository, start a contribution branch from the
+current `staging` branch. Use Python 3 and the Node version specified in `.nvmrc`.
+From the repository root, install the tools:
+
+```bash
+python3 -m venv region-tools/.venv
+source region-tools/.venv/bin/activate
+python -m pip install -r region-tools/requirements.txt
+npm ci
+```
+
+The repository includes Census inputs. You normally do not need to download
+fresh boundaries just to add a region using an existing town or county.
+
+## 3. Add the boundary definition
+
+Add one entry to the `REGIONS` list in
+`region-tools/build_meshcore_regions.py`. Use a unique `id`; `short_name` is its
+display abbreviation. Include the boundary basis and explanatory notes.
+
+The existing Northbridge definition is a municipal example—do not add it a
+second time:
+
+```python
+{
+    "id": "northbridge",
+    "name": "Northbridge, MA",
+    "short_name": "NORTHBRIDGE",
+    "kind": "city_region",
+    "region_type": "Municipal Regions",
+    "basis": "Existing political boundary represented by a U.S. Census county subdivision boundary",
+    "towns": {
+        "MA": ["Northbridge"],
+    },
+    "notes": "Covers the Town of Northbridge; overlaps BOS and the statewide MA region.",
+},
+```
+
+Keep the Census selector `Northbridge` separate from the display name
+`Northbridge, MA`. Municipal regions use the machine kind `city_region` and the
+explicit display label `Municipal Regions`; the map places municipal matches
+above overlapping metro matches.
+
+Other boundary selectors are available. These are fragments to put in a complete
+definition, not additional regions to add as-is:
+
+```python
+# County-based boundary: county names are grouped by state abbreviation.
+"counties": {"MA": ["Worcester"]},
+
+# Statewide boundary: select the whole state.
+"states": ["MA"],
+```
+
+Choose a `kind` and `region_type` appropriate to the boundary; copy the structure
+of the closest existing region. Town selection uses Census county subdivisions
+and is available only for states included in `TOWN_STATES` in
+`region-tools/build_census_boundaries.py`. Use the exact names in the input data;
+the builder reports missing town or county selectors.
+
+If the requested boundary is not represented by those inputs, explain the source
+and proposed approach in the pull request rather than substituting an unrelated
+boundary. Consult the Region Tools README for the existing tooling.
+
+## 4. Set status and coordinators
+
+In `region-tools/build_meshcore_regions.py`, add the new ID to the appropriate
+status collection:
+
+| Collection | Use |
+| --- | --- |
+| `OFFICIAL_NEW_ENGLAND_REGION_IDS` | Approved official New England Mesh regions |
+| `PROPOSED_REGION_IDS` | Regions awaiting adoption |
+| `COORDINATED_EXTERNAL_REGION_IDS` | External regions coordinated with local operators |
+| `POLITICAL_BOUNDARY_REGION_IDS` | Political-boundary reference regions |
+
+An unclassified ID defaults to `extrapolated_external`, displayed as Suggested
+External Region. Do not rely on that default for a proposed or official region.
+
+Add a matching entry to the `regions` array in
+`region-tools/region_manifest.json`. For example, Northbridge uses:
+
+```json
+{"id": "northbridge", "coordinator": "[yellowcooln], [DeputyDawg]"}
+```
+
+Bracket each coordinator separately. Preserve any approved existing contact
+information when editing an entry. Manifest IDs must match the IDs in `REGIONS`
+exactly. Optional settings include `"visible": false` to hide a layer initially
+and `"optional": true` to mark an optional region; use them only when intended.
+
+## 5. Generate the map files
+
+With the Python environment activated, run from the repository root:
+
+```bash
+python region-tools/build_meshcore_regions.py
+```
+
+The generator writes the region GeoJSON files and `index.json` into
+`static/regions/`. It also writes an ignored local coverage report at
+`region-tools/validation_report.md`. Commit the generated map data with the
+source changes; do not hand-draw boundaries or edit only the generated index.
+
+Coordination status comes from `index.json`; coordinator strings are written into
+the GeoJSON features. Check both outputs, not just the source definition.
+Review the entire generated diff: rebuilding can expose existing source/output
+mismatches. Investigate those differences rather than silently including unrelated
+boundary or coordinator changes in the same contribution.
+
+Only refresh Census inputs when needed for new source coverage or a deliberate
+boundary update:
+
+```bash
+python region-tools/build_census_boundaries.py
+python region-tools/build_meshcore_regions.py
+```
+
+A source refresh can affect many regions. Explain it separately and review all
+changed boundaries.
+
+## 6. Update the region page and verify
+
+Update the status/code lists in `src/pages/regions.tsx`. Official regions belong
+in the Official New England list. Proposed regions are listed in
+`proposedRegionCodes`; remove a code there if it becomes official. Update any
+existing notes that would become inaccurate.
+
+Run the site checks from the repository root:
+
+```bash
+npm run typecheck
+npm run build:production
+npm run build:staging
+git diff --check
+npm run serve
+```
+
+The last build above is the staging build. Open the local preview at
+`http://localhost:3000/regions/` and its map at
+`http://localhost:3000/regions/map`. Stop the preview with Ctrl+C when finished.
+
+Check more than whether the files build:
+
+- The generated boundary matches the intended source geometry, including islands
+  or separate pieces where applicable.
+- Representative places inside are included and nearby places outside are excluded.
+- Existing overlapping regions remain intact.
+- The layer list, legend, and location popup show the correct code and name.
+- The popup shows the agreed status, category, and bracketed coordinators.
+- Municipal matches appear above overlapping metro matches.
+- The region page lists the code under the correct status.
+
+The generator's coverage report checks overall New England coverage; it does not
+prove that a new local boundary is correct.
+
+## 7. Submit the pull request
+
+Target `staging` and include:
+
+- The definition and status changes in `region-tools/build_meshcore_regions.py`.
+- The matching coordinator/settings entry in `region-tools/region_manifest.json`.
+- The new `static/regions/<region-code>.geojson` and updated generated index.
+- Relevant region-page code lists or notes.
+- The boundary source, coordination approval or proposal context, and checks run.
+
+Keep unrelated generated changes out of the pull request. After the change is
+merged and staging deployment finishes, check the live map again using a point
+inside the new region. A successful build alone does not verify the displayed
+boundary or popup.
+
+See [Contributing documentation](./contributing) for general contribution and
+writing guidelines.

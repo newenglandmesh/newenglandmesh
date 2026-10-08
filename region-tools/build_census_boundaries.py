@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Download official U.S. Census cartographic state/county boundaries and build
-editable GeoJSON subsets for the MeshCore EAST scope.
+Download official U.S. Census cartographic state, county, and town boundaries
+and build editable GeoJSON subsets for the MeshCore EAST scope.
 
 Requires:
     python -m pip install geopandas requests pyogrio shapely
@@ -13,6 +13,7 @@ import tempfile
 import zipfile
 import requests
 import geopandas as gpd
+import pandas as pd
 
 YEAR = 2024
 RESOLUTION = "5m"  # use "20m" for smaller files or "500k" for much more detail
@@ -20,6 +21,12 @@ OUT = Path(__file__).resolve().parent
 
 STATE_URL = f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_us_state_{RESOLUTION}.zip"
 COUNTY_URL = f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_us_county_{RESOLUTION}.zip"
+
+
+def town_url(statefp: str) -> str:
+    # County subdivisions (New England cities and towns) are published per
+    # state and only at 500k resolution.
+    return f"https://www2.census.gov/geo/tiger/GENZ{YEAR}/shp/cb_{YEAR}_{statefp}_cousub_500k.zip"
 
 # Coastal EAST scope, Florida through Maine.
 EAST_CORE = {
@@ -45,6 +52,9 @@ STATE_FIPS = {
     "New Jersey":"34", "Pennsylvania":"42"
 }
 
+# States whose cities and towns are available to town-level regions.
+TOWN_STATES = {"Massachusetts"}
+
 def download_and_extract(url: str, destination: Path) -> Path:
     response = requests.get(url, timeout=120)
     response.raise_for_status()
@@ -63,12 +73,21 @@ county_dir.mkdir()
 state_shp = download_and_extract(STATE_URL, state_dir)
 county_shp = download_and_extract(COUNTY_URL, county_dir)
 
+town_frames = []
+for state_name in sorted(TOWN_STATES):
+    statefp = STATE_FIPS[state_name]
+    town_dir = source_root / f"town_source_{statefp}"
+    town_dir.mkdir()
+    town_frames.append(gpd.read_file(download_and_extract(town_url(statefp), town_dir)))
+
 states = gpd.read_file(state_shp).to_crs(4326)
 counties = gpd.read_file(county_shp).to_crs(4326)
+towns = gpd.GeoDataFrame(pd.concat(town_frames, ignore_index=True)).to_crs(4326)
 
 # Keep only useful columns plus geometry.
 state_cols = [c for c in ["STATEFP", "STUSPS", "NAME", "GEOID", "geometry"] if c in states.columns]
 county_cols = [c for c in ["STATEFP", "COUNTYFP", "NAME", "NAMELSAD", "GEOID", "geometry"] if c in counties.columns]
+town_cols = [c for c in ["STATEFP", "COUNTYFP", "COUSUBFP", "NAME", "NAMELSAD", "GEOID", "geometry"] if c in towns.columns]
 
 states[states["NAME"].isin(EAST_CORE)][state_cols].to_file(
     OUT / "census_east_core_states.geojson", driver="GeoJSON"
@@ -93,5 +112,7 @@ counties[counties["STATEFP"].isin(northeast_fips)][county_cols].to_file(
 states[states["NAME"].isin(NORTHEAST_WORK_AREA)][state_cols].to_file(
     OUT / "census_northeast_states.geojson", driver="GeoJSON"
 )
+
+towns[town_cols].to_file(OUT / "census_towns.geojson", driver="GeoJSON")
 
 print(f"Wrote GeoJSON files to {OUT.resolve()}")

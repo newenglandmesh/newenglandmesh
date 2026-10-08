@@ -1002,6 +1002,10 @@
         .sort((a, b) => {
           if (regionId(a) === "east") return 1;
           if (regionId(b) === "east") return -1;
+          // Show municipal regions before their overlapping metro regions.
+          const aIsCity = a.kind === "city_region" || ["Municipal Regions", "City Region"].includes(regionTypeLabel(a));
+          const bIsCity = b.kind === "city_region" || ["Municipal Regions", "City Region"].includes(regionTypeLabel(b));
+          if (aIsCity !== bIsCity) return aIsCity ? -1 : 1;
           return String(a.short_name).localeCompare(String(b.short_name));
         });
     }
