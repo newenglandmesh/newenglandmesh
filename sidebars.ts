@@ -13,6 +13,7 @@ const sidebars: SidebarsConfig = {
       ],
     },
     'contributing',
+    'adding-a-region',
   ],
 };
 
