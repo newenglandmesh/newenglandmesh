@@ -71,7 +71,7 @@
       "id": "fbg",
       "name": "Fitchburg, MA",
       "short_name": "FBG",
-      "region_type": "City Region",
+      "region_type": "Municipal Regions",
       "coordination_status": "official_new_england",
       "coordination_label": "Official New England Mesh Region",
       "file": "fbg.geojson"

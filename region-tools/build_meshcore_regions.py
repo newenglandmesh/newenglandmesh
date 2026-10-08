@@ -165,6 +165,7 @@ REGIONS = [
         "name": "Fitchburg, MA",
         "short_name": "FBG",
         "kind": "city_region",
+        "region_type": "Municipal Regions",
         "basis": "Existing political boundary represented by a U.S. Census county subdivision boundary",
         "towns": {
             "MA": ["Fitchburg"],
