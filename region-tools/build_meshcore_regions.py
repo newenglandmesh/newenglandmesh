@@ -162,7 +162,7 @@ REGIONS = [
     },
     {
         "id": "fbg",
-        "name": "Fitchburg",
+        "name": "Fitchburg, MA",
         "short_name": "FBG",
         "kind": "city_region",
         "basis": "Existing political boundary represented by a U.S. Census county subdivision boundary",
