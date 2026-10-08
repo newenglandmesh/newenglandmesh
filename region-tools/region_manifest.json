@@ -9,6 +9,7 @@
     {"id": "ma"},
     {"id": "bos", "coordinator": "[yellowcooln], [nickd0728]"},
     {"id": "fbg", "coordinator": "[Old Growth Co-op] / https://mesh.og.coop / hello@og.coop"},
+    {"id": "northbridge", "coordinator": "[yellowcooln], [DeputyDawg]"},
     {"id": "pv", "coordinator": "[rla_ma]"},
     {"id": "brk", "coordinator": "Helped: [rla_ma]"},
     {"id": "ct", "coordinator": "[KO4TSM/jrddunbr/jared@ctmesh.org]"},

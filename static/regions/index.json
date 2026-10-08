@@ -77,6 +77,15 @@
       "file": "fbg.geojson"
     },
     {
+      "id": "northbridge",
+      "name": "Northbridge, MA",
+      "short_name": "NORTHBRIDGE",
+      "region_type": "Municipal Regions",
+      "coordination_status": "official_new_england",
+      "coordination_label": "Official New England Mesh Region",
+      "file": "northbridge.geojson"
+    },
+    {
       "id": "pv",
       "name": "Pioneer Valley",
       "short_name": "PV",

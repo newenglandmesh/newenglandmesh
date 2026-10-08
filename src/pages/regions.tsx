@@ -137,7 +137,7 @@ export default function Regions(): ReactNode {
                   <p>Official New England Mesh coordination regions; they may evolve with the group.</p>
                   <div className={styles.codeList}>
                     <code>me</code><code>nh</code><code>vt</code><code>ma</code><code>bos</code>
-                    <code>fbg</code><code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
+                    <code>fbg</code><code>northbridge</code><code>pv</code><code>brk</code><code>ct</code><code>ct-rv</code>
                     <code>ri</code>
                   </div>
                 </article>
