@@ -82,7 +82,7 @@ const localNewEnglandCommunities: Community[] = [
     name: 'Fitchburg Mesh',
     area: 'Fitchburg, Massachusetts',
     state: 'ma',
-    description: 'Old Growth Co-op’s local MeshCore network, serving Fitchburg',
+    description: 'Old Growth Co-op’s local MeshCore network, serving Fitchburg and coordinating the fbg MeshCore region.',
     website: 'https://mesh.og.coop/',
   },
   {

@@ -6,7 +6,8 @@ written directly to `static/regions/`; they are not duplicated here.
 
 ## Contents
 
-- `build_census_boundaries.py` downloads the Census state and county inputs.
+- `build_census_boundaries.py` downloads the Census state, county, and town
+  (county subdivision) inputs.
 - `build_meshcore_regions.py` builds the region GeoJSON and its manifest.
 - `region_manifest.json` provides non-derived map settings such as the title,
   initial layer visibility, and coordinator strings; the builder writes the
@@ -18,7 +19,9 @@ written directly to `static/regions/`; they are not duplicated here.
 
 Region definitions are maintained in the `REGIONS` list in
 `build_meshcore_regions.py`. Edit those definitions, then rebuild the generated
-website data.
+website data. A definition selects geometry by whole `states`, by `counties`,
+or by `towns` (Census county subdivisions); town-level selection is available
+for states listed in `TOWN_STATES` in `build_census_boundaries.py`.
 
 ## Generated Schema
 
