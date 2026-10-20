@@ -26,7 +26,7 @@ ADIRONDACK_RAW = SOURCES / "adirondack_park_boundary_raw.geojson"
 ADIRONDACK_EXCLUSION = SOURCES / "adirondack_park_exclusion.geojson"
 
 NE_STATES = {"CT", "RI", "MA", "VT", "NH", "ME"}
-OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "ma", "bos", "fbg", "northbridge", "pv", "brk", "ct", "ct-rv", "ri"}
+OFFICIAL_NEW_ENGLAND_REGION_IDS = {"me", "nh", "vt", "ma", "bos", "bur", "fbg", "northbridge", "pv", "brk", "ct", "ct-rv", "ri"}
 POLITICAL_BOUNDARY_REGION_IDS = {"east", "northeast", "adk"}
 # Keep this collection even when there are no current proposals. Adding an ID
 # here restores its generated proposed-region metadata automatically.
@@ -159,6 +159,18 @@ REGIONS = [
             "MA": ["Barnstable", "Bristol", "Dukes", "Essex", "Middlesex", "Nantucket", "Norfolk", "Plymouth", "Suffolk", "Worcester"],
         },
         "notes": "Primary region for Boston / Eastern Massachusetts, entirely within Massachusetts; overlaps the statewide MA region and contains FBG.",
+    },
+    {
+        "id": "bur",
+        "name": "Burlington, MA",
+        "short_name": "BUR",
+        "kind": "city_region",
+        "region_type": "Municipal Regions",
+        "basis": "Existing political boundary represented by a U.S. Census county subdivision boundary",
+        "towns": {
+            "MA": ["Burlington"],
+        },
+        "notes": "Covers the Town of Burlington; overlaps BOS and the statewide MA region. Local coordination: #bur-mesh.",
     },
     {
         "id": "fbg",

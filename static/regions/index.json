@@ -68,6 +68,15 @@
       "file": "bos.geojson"
     },
     {
+      "id": "bur",
+      "name": "Burlington, MA",
+      "short_name": "BUR",
+      "region_type": "Municipal Regions",
+      "coordination_status": "official_new_england",
+      "coordination_label": "Official New England Mesh Region",
+      "file": "bur.geojson"
+    },
+    {
       "id": "fbg",
       "name": "Fitchburg, MA",
       "short_name": "FBG",
