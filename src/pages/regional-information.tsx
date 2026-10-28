@@ -114,6 +114,15 @@ const northeastCommunities: Community[] = [
     meshMapper: {label: 'NYC · New York City', href: 'https://nyc.meshmapper.net/'},
   },
   {
+    name: 'Long Island Mesh',
+    area: 'Long Island, NY',
+    state: 'ny',
+    description: 'Long Island mesh community',
+    website: 'https://limesh.org/',
+    discord: 'https://discord.gg/YEEkVz9cSF',
+    meshMapper: {label: 'NYC · New York City', href: 'https://nyc.meshmapper.net/'},
+  },
+  {
     name: 'Kaatskills Mesh',
     area: 'Sullivan County & Southern Catskills, New York',
     state: 'ny',
