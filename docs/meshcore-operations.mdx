@@ -17,6 +17,35 @@ MeshCore **Repeaters** and **Room Servers** are the infrastructure devices to
 plan carefully. They should be stable, reachable, and documented because other
 operators may depend on them for coverage and routing.
 
+## Regional radio presets
+
+**Use the US preset for most of New England.** Central Vermont also has an
+established MeshCore network using the coordinated 500 kHz alternative below.
+Check with local operators before choosing a preset, especially when traveling
+in Vermont.
+
+| Setting | US preset — most of New England | Central Vermont / coordinated 500 kHz alternative |
+| --- | --- | --- |
+| Frequency | 910.525 MHz | 910.525 MHz |
+| Bandwidth | 62.5 kHz | 500 kHz |
+| Spreading factor | 7 | 12 |
+| Coding rate | 5 | 6 |
+
+This is **not a request to move existing networks to 500 kHz**. If your local
+community chooses to test 500 kHz elsewhere in New England, coordinate with
+nearby operators and use the same alternative rather than creating a competing
+500 kHz preset.
+
+**The two presets do not communicate directly over the air.** Do not assume a
+bridge exists between them; changing presets can disconnect you from nearby
+repeaters. MeshCore forwarding regions do not bridge different radio presets.
+
+The [RUT Vermont MeshMapper map](https://rut.meshmapper.net/) is a map-service
+identifier, separate from the `vt` forwarding region on our [boundary
+map](/regions). Neither label guarantees that every local node uses the same
+preset. Confirm local settings rather than applying the Central Vermont preset
+to all of Vermont or assuming it applies to `ct-rv`.
+
 ## Set up MeshCore Repeaters and Room Servers
 
 1. Pick a legal site with good elevation, weather protection, stable power, and

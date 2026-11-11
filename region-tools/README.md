@@ -10,8 +10,9 @@ written directly to `static/regions/`; they are not duplicated here.
   (county subdivision) inputs.
 - `build_meshcore_regions.py` builds the region GeoJSON and its manifest.
 - `region_manifest.json` provides non-derived map settings such as the title,
-  initial layer visibility, and coordinator strings; the builder writes the
-  coordinator strings to region GeoJSON properties.
+  initial layer visibility, coordinator strings, and optional `radio_notes` shown
+  in map popups; the builder writes the coordinator strings to region GeoJSON
+  properties and carries radio notes into the generated index.
 - `census_*.geojson` are local Census-derived inputs used by the builder.
 - `sources/` contains source geometry that is not provided by Census inputs.
 - `requirements.txt` lists the Python dependencies.

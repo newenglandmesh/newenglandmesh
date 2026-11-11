@@ -978,6 +978,9 @@
             const coordinator = props.coordinator
               ? `<span>Coordinator: ${escapeHtml(props.coordinator)}</span>`
               : "";
+            const radioNotes = props.radio_notes
+              ? `<span>Radio settings: ${escapeHtml(props.radio_notes)}</span>`
+              : "";
             return `
               <li>
                 <span class="${swatchClass(props)}" style="color: ${color}; background-color: ${color}33"></span>
@@ -986,6 +989,7 @@
                   <span>${regionTypeLabel(props)}</span>
                   <span class="coordination-badge ${coordinationClass(props)}">${coordinationLabel(props)}</span>
                   ${coordinator}
+                  ${radioNotes}
                 </div>
               </li>
             `;

@@ -42,7 +42,7 @@ const statewideCommunities: Community[] = [
     name: 'Vermont MeshCore',
     area: 'Vermont',
     state: 'vt',
-    description: 'Statewide MeshMapper coverage region. We were not able to find a website or Discord',
+    description: 'Vermont MeshMapper region. Central Vermont uses a coordinated 500 kHz alternative to the US preset; confirm local radio settings before joining.',
     meshMapper: {label: 'RUT · Vermont', href: 'https://rut.meshmapper.net/'},
   },
   {

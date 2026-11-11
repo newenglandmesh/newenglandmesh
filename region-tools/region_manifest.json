@@ -5,7 +5,7 @@
     {"id": "northeast", "visible": false},
     {"id": "me", "coordinator": "[welcometo2079551], [db2222.]"},
     {"id": "nh", "coordinator": "[grleblanc]"},
-    {"id": "vt", "coordinator": "[blyah42]"},
+    {"id": "vt", "coordinator": "[blyah42]", "radio_notes": "Central Vermont uses 910.525 MHz / 500 kHz / SF12 / CR6, distinct from the US preset used across most of New England. Confirm local settings; do not assume all Vermont nodes use 500 kHz or that a bridge connects the presets. RUT is the Vermont MeshMapper code, not a separate forwarding region."},
     {"id": "ma"},
     {"id": "bos", "coordinator": "[yellowcooln], [nickd0728]"},
     {"id": "bur", "coordinator": "[mnk9050, toxicfather45]"},
