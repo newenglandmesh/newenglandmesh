@@ -5,9 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
-    "build:production": "DEPLOY_ENV=production docusaurus build",
-    "build:staging": "DEPLOY_ENV=staging docusaurus build",
+    "build": "node scripts/build-site.mjs",
+    "build:production": "DEPLOY_ENV=production node scripts/build-site.mjs",
+    "build:staging": "DEPLOY_ENV=staging node scripts/build-site.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "wrangler deploy",
     "deploy:staging": "wrangler deploy --env staging",
