@@ -63,32 +63,59 @@ Useful links:
 - [MeshCore docs](https://docs.meshcore.io/)
 - [MeshCore flasher](https://flasher.meshcore.io/)
 - [MeshCore map](https://map.meshcore.io/)
+- [CT Mesh repeater setup](https://ctmesh.org/repeater-setup) — hardware,
+  flashing, USB configuration, companion-based management, and deployment.
+  Follow CT-specific region settings only for Connecticut sites; use our
+  [region map](/regions) and local guidance elsewhere.
 
-## Publish observer data with mctomqtt
+<a id="publish-observer-data-with-mctomqtt" />
 
-MeshCore observer setups publish what a local node can hear to MQTT so maps and
-analysis tools can show regional activity. A typical observer is a MeshCore node
-connected to a small always-on computer running `mctomqtt`.
+## Publish observer data
+
+An observer reports the local MeshCore traffic it hears to MQTT so maps and
+analysis tools can show network activity. Choose either dedicated observer
+firmware on a compatible Wi-Fi node or a radio connected to a separate Linux
+host. Reporting to MQTT does not itself extend RF coverage.
 
 You do not need to pair every Repeater or Room Server with an observer. New
 England Mesh already has many observers on the main mesh, so add another one
 when it improves regional visibility or fills a known monitoring gap.
 
-Basic process:
+### Dedicated Observer Firmware — recommended for compatible Wi-Fi nodes
 
-1. Build or install `mctomqtt` on a small always-on host near the radio.
-2. Connect the host to the MeshCore node over the supported serial or network
-   interface.
-3. Configure the MQTT broker, topic prefix, observer identity, and credentials.
-4. Start it under a service manager such as `systemd`.
-5. Confirm that observations appear in the intended map or downstream service.
-6. Document the radio, host, antenna, power source, and maintainer.
+[CT Mesh recommends dedicated Observer Firmware](https://ctmesh.org/observer-setup)
+for most Wi-Fi-connected fixed observers. It runs directly on the radio,
+publishes to community MQTT services, and synchronizes the node's clock through
+NTP without a separate always-on computer.
 
-Links to expand from:
+Use the [Observer Firmware flasher](https://observer.gessaman.com/?config=mqtt-observer)
+and [firmware setup guide](https://observer.gessaman.com/docs.html). Select the
+build for your exact hardware and revision, match the [local radio
+preset](#regional-radio-presets), and follow your community's broker and region
+instructions. Do not copy another region's example settings unchanged.
 
-- [mctomqtt on GitHub](https://github.com/liamcottle/mctomqtt)
-- [New England MeshCore map](https://map.newenglandme.sh/)
-- [MeshCore region boundaries](/regions)
+For Connecticut, follow the [CT Mesh observer setup](https://ctmesh.org/observer-setup)
+for its `ctmesh` broker preset, `BDL` reporting identifier, and verification
+steps. These are CT-specific settings, not defaults for every New England
+observer.
+
+### Linux / mctomqtt — alternative for a separate host
+
+Use [meshcoretomqtt (`mctomqtt`)](https://github.com/Cisien/meshcoretomqtt) when
+you already operate a Raspberry Pi/Linux host or your radio has no suitable
+network connection.
+
+1. Follow the project guide to select suitable packet-logging firmware and
+   connect the radio to the host over USB serial.
+2. Install and configure `mctomqtt`, including your community's MQTT destination
+   and observer reporting identifier.
+3. Start the service, confirm MQTT connectivity, and verify that observations
+   appear in the intended map or analyzer.
+4. Document the radio, host, antenna, power source, and maintainer.
+
+CT Mesh's [observer guide](https://ctmesh.org/observer-setup) includes this Linux
+method as well as dedicated firmware. It also explains when a nearby observer
+should stop repeating to avoid redundant RF forwarding.
 
 ## Community MQTT services
 
@@ -106,10 +133,10 @@ before connecting an observer:
 - **Greater Boston Mesh:** [`mqttmc01.bostonme.sh` setup and broker
   details](https://bostonme.sh/docs/MeshCore/meshcore-mqtt). The documented
   listener uses secure WebSockets on port `443` with token authentication.
-- **Connecticut Mesh:** [CT Mesh MeshCore
-  resources](https://ctmesh.org/meshcore-resources). CT Mesh documents an
-  uplink-only broker at `mqtt.ctmesh.org` for fixed observer nodes, using the
-  `BDL` region code.
+- **Connecticut Mesh:** [Repeater setup](https://ctmesh.org/repeater-setup) and
+  [observer setup](https://ctmesh.org/observer-setup), including dedicated
+  firmware and Linux instructions. Its uplink-only broker at `mqtt.ctmesh.org`
+  uses the `BDL` reporting identifier; MQTT reporting does not bridge RF networks.
 - **NHMesh:** [NHMesh knowledge base](https://nhmesh.live/kb). Use its current
   Observer / Gateway Setup and MQTT guidance for New Hampshire deployments.
 - **Maine Mesh:** [Maine Mesh observer
