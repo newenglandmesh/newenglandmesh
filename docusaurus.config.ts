@@ -15,6 +15,9 @@ const config: Config = {
 
   future: {
     v4: true,
+    // Use the standard build pipeline: SWC's native cache rejects the hosted
+    // runner's directory permissions. Keep its security checks intact.
+    faster: false,
   },
 
   url: siteUrl,
