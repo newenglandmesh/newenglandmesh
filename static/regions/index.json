@@ -47,7 +47,8 @@
       "region_type": "State Region",
       "coordination_status": "official_new_england",
       "coordination_label": "Official New England Mesh Region",
-      "file": "vt.geojson"
+      "file": "vt.geojson",
+      "radio_notes": "Central Vermont uses 910.525 MHz / 500 kHz / SF12 / CR6, distinct from the US preset used across most of New England. Confirm local settings; do not assume all Vermont nodes use 500 kHz or that a bridge connects the presets. RUT is the Vermont MeshMapper code, not a separate forwarding region."
     },
     {
       "id": "ma",

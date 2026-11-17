@@ -42,7 +42,7 @@ const statewideCommunities: Community[] = [
     name: 'Vermont MeshCore',
     area: 'Vermont',
     state: 'vt',
-    description: 'Statewide MeshMapper coverage region. We were not able to find a website or Discord',
+    description: 'Vermont MeshMapper region. Central Vermont uses a coordinated 500 kHz alternative to the US preset; confirm local radio settings before joining.',
     meshMapper: {label: 'RUT · Vermont', href: 'https://rut.meshmapper.net/'},
   },
   {
@@ -111,6 +111,15 @@ const northeastCommunities: Community[] = [
     description: 'New York-area mesh community',
     website: 'https://nyme.sh/',
     discord: 'https://discord.nyme.sh/',
+    meshMapper: {label: 'NYC · New York City', href: 'https://nyc.meshmapper.net/'},
+  },
+  {
+    name: 'Long Island Mesh',
+    area: 'Long Island, NY',
+    state: 'ny',
+    description: 'Long Island mesh community',
+    website: 'https://limesh.org/',
+    discord: 'https://discord.gg/YEEkVz9cSF',
     meshMapper: {label: 'NYC · New York City', href: 'https://nyc.meshmapper.net/'},
   },
   {

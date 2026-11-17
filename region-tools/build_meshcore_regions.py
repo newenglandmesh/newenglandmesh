@@ -75,7 +75,7 @@ def read_manifest_config(region_ids: list[str]) -> dict:
             raise ValueError(f"Duplicate region manifest entry: {region_id}")
         settings_by_id[region_id] = {
             key: entry[key]
-            for key in ("optional", "visible", "coordinator")
+            for key in ("optional", "visible", "coordinator", "radio_notes")
             if key in entry
         }
 

@@ -16,6 +16,7 @@ These services are hosted for the wider New England community:
 - [New England Mesh Website and Documentation](https://newenglandme.sh/)
 - [New England MeshCore Live Map](https://map.newenglandme.sh/)
 - [New England MeshCore Analyzer](https://analyzer.newenglandme.sh/)
+- [New England MeshCore Beacon](https://beacon.newenglandme.sh/)
 - [MeshCore Region Boundaries](https://newenglandme.sh/regions/)
 - [Service Healthcheck](https://healthcheck.newenglandme.sh/)
 - [New England Mesh Discord](https://discord.newenglandme.sh/)
@@ -25,6 +26,20 @@ The regional map and analyzer combine data for Connecticut, Massachusetts, and
 New Hampshire. Their backend does **not** accept direct observer uploads.
 MeshCore observers should publish to their local community MQTT service; New
 England Mesh aggregates that community data upstream.
+
+### MeshCore Beacon
+
+[Beacon](https://beacon.newenglandme.sh/) provides another view of regional
+MeshCore traffic alongside the existing CoreScope analyzer. Explore packets,
+nodes, observers, and channels, or use Atlas to follow up to 12 radios with
+activity and signal charts.
+
+You can also use `https://beacon.newenglandme.sh/` as the server URL in the
+Beacon mobile app.
+
+Atlas watchlists are saved locally in your browser, not shared between devices
+or hostnames. Use Export and Import to move a watchlist to another browser or
+from the previous hostname.
 
 ## Greater Boston and Massachusetts
 
@@ -52,6 +67,10 @@ setup guides, MQTT information, and community coordination.
 - [CT Mesh Website](https://ctmesh.org/)
 - [CT Mesh Discord](https://ctmesh.org/discord)
 - [MeshCore Map](https://meshcore-map.ctmesh.org/)
+- [MeshCore Repeater Setup](https://ctmesh.org/repeater-setup) — build, flash,
+  configure, and deploy a repeater
+- [MeshCore Observer Setup](https://ctmesh.org/observer-setup) — recommended
+  dedicated Wi-Fi observer firmware, plus the Linux / `mctomqtt` alternative
 - [MeshCore Guides, Tools, and MQTT](https://ctmesh.org/meshcore-resources.html)
 - [Meshtastic Map](https://meshtastic-map.ctmesh.org/)
 - [Meshtastic Guides, Tools, and MQTT](https://ctmesh.org/meshtastic-resources.html)
@@ -64,6 +83,14 @@ observer guidance, MQTT setup information, and live network tools.
 - [NHMesh Website](https://nhmesh.com/)
 - [NHMesh Live](https://nhmesh.live/)
 - [NHMesh Discord](https://discord.gg/PkbHWSEXBv)
+
+## Vermont
+
+The [RUT Vermont MeshMapper map](https://rut.meshmapper.net/) includes the area
+served by Central Vermont's established 500 kHz MeshCore network. Most of New
+England uses the US preset; check with local operators rather than assuming one
+preset applies throughout Vermont. See the [regional radio presets and
+compatibility notes](./meshcore-operations#regional-radio-presets).
 
 ## Maine
 
